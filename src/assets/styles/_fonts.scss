@@ -1,0 +1,13 @@
+$font-types: 'Thin', 'ExtraLight', 'Light', 'Regular', 'Medium', 'SemiBold', 'Bold', 'ExtraBold';
+$font-weights: 100, 200, 300, 400, 500, 600, 700, 800, 900;
+
+@mixin add-font($fontName, $types: $font-types, $weights: $font-weights) {
+    @for $i from 1 to 9 {
+        @font-face {
+            font-family: $fontName;
+            src: url('~@/assets/fonts/#{$fontName}/#{$fontName}-#{nth($types, $i)}.ttf') format('truetype');
+            font-weight: nth($weights, $i);
+        }
+    }
+}
+@include add-font('Spartan');
