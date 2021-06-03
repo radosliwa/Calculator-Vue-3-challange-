@@ -13,10 +13,22 @@
     padding: 1rem 1.5rem;
     display: flex;
     justify-content: center;
+    cursor: pointer;
 }
 .button{
     @extend %button;
     &:nth-child(17),&:last-of-type{
         grid-column: span 2;
+    }
+    font-weight: 800;
+    font-size: 1.5rem;
+    box-shadow: $keyShadowMain;
+    transition: all .1s linear;
+    &:hover:not(.active){
+        box-shadow: $keyShadowMainHover;
+    }
+    &.active{
+        transform: scale(.95);
+        box-shadow: 0px 5px 0px rgba(25, 25, 25, .5);
     }
 }

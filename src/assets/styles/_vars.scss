@@ -8,7 +8,9 @@ $screenAndToggleBackground: hsl(224, 36%, 15%);
 // keys
 
 $keyBcg: hsl(225, 21%, 49%);
-$keyShadow: hsl(224, 28%, 35%);
+$keyShadowMain: 0px 5px 0px rgba(64, 78, 114, 0.6);
+$keyShadowMainHover: 0px 8px 0px rgba(52, 65, 99, 1);
+$keyShadowMainActive: 0px 5px 0px black;
 $keyWhiteBcg: #F0F0F0;
 
 $toggleBcg:hsl(6, 63%, 50%);
