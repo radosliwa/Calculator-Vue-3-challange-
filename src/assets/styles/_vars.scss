@@ -1,4 +1,6 @@
 
+
+
 // backgrounds
 
 $mainBackground: hsl(222, 26%, 31%);
@@ -12,9 +14,24 @@ $keyShadowMain: 0px 5px 0px rgba(64, 78, 114, 0.6);
 $keyShadowMainHover: 0px 8px 0px rgba(52, 65, 99, 1);
 $keyShadowMainActive: 0px 5px 0px black;
 $keyWhiteBcg: #F0F0F0;
+$keyBlueBcg: hsl(225, 21%, 49%);
+$keyBlueShadow: 0px 5px 0px hsl(225, 21%, 49%);
 
-$toggleBcg:hsl(6, 63%, 50%);
-$toggleShadow: hsl(6, 70%, 34%);
+
+$equalBcg:hsl(6, 63%, 50%);
+$equalShadow:hsl(6, 70%, 34%);
 // - Light grayish orange (key background): hsl(30, 25%, 89%)
 // - Grayish orange (key shadow): hsl(28, 16%, 65%)
 
+
+/* TYPOGRAPHY */
+
+$mainSize: 32px;
+
+/* LAYOUT */
+
+$mainRadius: 5px;
+
+@mixin boxShadow($down:5px, $color:black) {
+    box-shadow: 0px $down 0px $color;
+}

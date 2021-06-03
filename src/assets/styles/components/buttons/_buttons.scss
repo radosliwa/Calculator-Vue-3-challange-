@@ -1,34 +1,41 @@
-.buttons{
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    grid-template-rows: 1fr;
-    padding: 1.25rem;
-    border-radius: 30px;
-    column-gap: 1rem;
-    row-gap: 1rem;
-}
-
-%button{
-    border-radius: 10px;
+%button {
+    border-radius: $mainRadius;
     padding: 1rem 1.5rem;
     display: flex;
     justify-content: center;
     cursor: pointer;
 }
-.button{
+.button {
     @extend %button;
-    &:nth-child(17),&:last-of-type{
+    &:nth-child(17),
+    &:last-of-type {
         grid-column: span 2;
     }
     font-weight: 800;
-    font-size: 1.5rem;
+    font-size: $mainSize;
     box-shadow: $keyShadowMain;
-    transition: all .1s linear;
-    &:hover:not(.active){
+    transition: all 0.1s ease-out;
+    &:hover:not(.active) {
         box-shadow: $keyShadowMainHover;
     }
-    &.active{
-        transform: scale(.95);
-        box-shadow: 0px 5px 0px rgba(25, 25, 25, .5);
+    &.active {
+        transform: scale(0.95);
+        box-shadow: 0px 5px 0px rgba(25, 25, 25, 0.5);
+    }
+    &-equal {
+        background-color: $equalBcg;
+        box-shadow: 0px 5px 0px $equalShadow;
+        color: $keyWhiteBcg;
+        &:hover:not(.active) {
+            box-shadow: 0px 8px 0px $equalShadow;
+        }
+    }
+    &-del,
+    &-reset {
+        background-color: $keyBlueBcg;
+        color: $keyWhiteBcg;
+        &:hover:not(.active) {
+            box-shadow: $keyShadowMainHover;
+        }
     }
 }
