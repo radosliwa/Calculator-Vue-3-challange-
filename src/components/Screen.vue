@@ -9,7 +9,8 @@
     </div>
 </template>
 
-<script>
+<script lang="ts">
+
 export default {
     name: 'Screen',
     props: {
@@ -26,7 +27,8 @@ export default {
 .screen {
     background: $screenAndToggleBackground;
     border-radius: $mainRadius;
-    padding: 1.25rem;
+    padding: 1rem;
+    min-height: 95px;
     display: flex;
     justify-content: flex-end;
     &_content {

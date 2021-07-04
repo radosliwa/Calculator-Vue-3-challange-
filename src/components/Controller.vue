@@ -13,15 +13,17 @@
     </div>
 </template>
 
-<script>
-import { ref } from 'vue';
+<script lang="ts">
+import { ref, defineComponent } from 'vue';
+
+import { IButton } from '@/types';
 import { config } from '../buttonsConfig';
 
-export default {
+export default defineComponent({
     name: 'Controller',
     setup(props, { emit }) {
-        let currentValue = ref(null);
-        const clickHandler = (val) => {
+        let currentValue = ref<null | IButton>(null);
+        const clickHandler = (val: IButton) => {
             currentValue.value = val;
             if (val.name === 'reset') {
                 setTimeout(() => {
@@ -41,7 +43,7 @@ export default {
             config, // 2
         };
     },
-};
+});
 </script>
 
 <style lang="scss">

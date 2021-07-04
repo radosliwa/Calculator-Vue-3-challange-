@@ -1,15 +1,19 @@
 module.exports = {
     root: true,
+
     env: {
         browser: true,
         node: true
     },
+
     extends: [
         'airbnb-base',
         // '@nuxtjs/eslint-config-typescript',
         'plugin:vue/vue3-strongly-recommended',
     ],
+
     ignorePatterns: ['**/*.js.snap'],
+
     rules: {
         indent: ['error', 4],
         'vue/html-indent': ['error', 4],
@@ -119,5 +123,15 @@ module.exports = {
         'no-shadow': 'off',
         'no-param-reassign': 'warn',
         'no-return-await': 'warn'
+    },
+
+    'extends': [
+      'airbnb-base',
+      'plugin:vue/vue3-strongly-recommended',
+      '@vue/typescript'
+    ],
+
+    parserOptions: {
+      parser: '@typescript-eslint/parser'
     }
 }
