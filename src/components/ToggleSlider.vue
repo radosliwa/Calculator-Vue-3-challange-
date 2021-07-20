@@ -16,12 +16,18 @@
 
 <script lang="ts">
 import { defineComponent, ref } from 'vue';
+import store from '@/composables/store';
 
 export default defineComponent({
     setup() {
-        let activeTheme = ref<number>(1);
+        const { setCurrentLayout, state: { currentLayout } } = store();
+
+        let activeTheme = ref<number>(Number(currentLayout.value.slice(-1)));
+        // setCurrentLayout(`Layout${activeTheme.value}`);
+
         let dotMovingClass = ref<string>('');
         let slideAmount = ref<string>('');
+
         const changeTheme = (theme: number) => {
             if (theme > activeTheme.value) {
                 dotMovingClass.value = 'right';
@@ -34,6 +40,7 @@ export default defineComponent({
                 activeTheme.value = theme;
                 dotMovingClass.value = '';
                 slideAmount.value = '0px';
+                setCurrentLayout(`Layout${theme}`);
             }, 300);
         };
         return {

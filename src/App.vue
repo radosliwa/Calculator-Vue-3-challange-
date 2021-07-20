@@ -1,29 +1,33 @@
 /* eslint-disable no-unused-vars */
 <template>
-    <component :is="layout">
+    <component :is="layout"
+               :id="layout"
+    >
         <div id="calculator">
             <Toggle />
             <Screen :number="currScreenValue" />
+            {{ layout }}
             <Controller @key-value="inputInterceptor" />
         </div>
     </component>
 </template>
 
 <script lang="ts">
-import { reactive, ref, defineComponent } from 'vue';
-
 // eslint-disable-next-line no-unused-vars
+import { reactive, ref, defineComponent, markRaw, computed, defineAsyncComponent, watch, Component } from 'vue';
+import store from '@/composables/store';
+
+// components
 import Controller from './components/Controller.vue';
 import Toggle from './components/Toggle.vue';
 import Screen from './components/Screen.vue';
-import DefaultLayout from './layouts/DefaultLayout.vue';
+
 // types
 import { IButton, TValue } from './types';
 
 export default defineComponent({
     name: 'App',
     components: {
-        DefaultLayout,
         Toggle,
         Screen,
         Controller,
@@ -34,12 +38,18 @@ export default defineComponent({
         let currScreenValue = ref<string | number | null>('');
         let operator = ref<null | TValue>(null);
         let wasOperatorSelected = ref<boolean>(!!operator.value);
+        const { state: { currentLayout } } = store();
+        let layout = reactive(currentLayout);
+
+        watch(currentLayout, async (newVal:string) => {
+            const val = await import(`@/layouts/${newVal}.vue`);
+            layout = val.default;
+        }, { immediate: true });
 
         const inputInterceptor = (btnValue: IButton) => {
             const input = ref<IButton>(btnValue);
             inputHandler(input.value);
         };
-
         const inputHandler = (input: IButton) => {
             const inputValue = input.altValue ?? input.value;
             const inputType = input.type;
@@ -98,11 +108,9 @@ export default defineComponent({
         return {
             inputInterceptor,
             currScreenValue,
+            layout,
         };
     },
-    data: () => ({
-        layout: 'DefaultLayout',
-    }),
 });
 </script>
 

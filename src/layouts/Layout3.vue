@@ -6,17 +6,18 @@
 import { defineComponent } from 'vue';
 
 export default defineComponent({
-    name: 'DefaultLayout',
+    name: 'Layout3',
 });
 </script>
 
 +
 +
 
-<style lang="scss">
+<style lang="scss"
+>
 
 .button{
-    background: $keyWhiteBcg;
+    background: red;
 }
 
 </style>
