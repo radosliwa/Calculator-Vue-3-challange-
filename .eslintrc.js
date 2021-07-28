@@ -122,7 +122,8 @@ module.exports = {
         'arrow-body-style': ['error', 'as-needed'],
         'no-shadow': 'off',
         'no-param-reassign': 'warn',
-        'no-return-await': 'warn'
+        'no-return-await': 'warn',
+        "comma-dangle": 'off'
     },
 
     'extends': [

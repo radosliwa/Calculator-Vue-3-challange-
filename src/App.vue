@@ -1,21 +1,20 @@
 /* eslint-disable no-unused-vars */
 <template>
-    <component :is="layout"
-               :id="layout"
-    >
+    <Layout>
         <div id="calculator">
             <Toggle />
             <Screen :number="currScreenValue" />
-            {{ layout }}
             <Controller @key-value="inputInterceptor" />
         </div>
-    </component>
+    </Layout>
 </template>
 
 <script lang="ts">
 // eslint-disable-next-line no-unused-vars
 import { reactive, ref, defineComponent, markRaw, computed, defineAsyncComponent, watch, Component } from 'vue';
-import store from '@/composables/store';
+
+// layouts
+import Layout from '@/layouts/Layout.vue';
 
 // components
 import Controller from './components/Controller.vue';
@@ -28,6 +27,7 @@ import { IButton, TValue } from './types';
 export default defineComponent({
     name: 'App',
     components: {
+        Layout,
         Toggle,
         Screen,
         Controller,
@@ -38,13 +38,6 @@ export default defineComponent({
         let currScreenValue = ref<string | number | null>('');
         let operator = ref<null | TValue>(null);
         let wasOperatorSelected = ref<boolean>(!!operator.value);
-        const { state: { currentLayout } } = store();
-        let layout = reactive(currentLayout);
-
-        watch(currentLayout, async (newVal:string) => {
-            const val = await import(`@/layouts/${newVal}.vue`);
-            layout = val.default;
-        }, { immediate: true });
 
         const inputInterceptor = (btnValue: IButton) => {
             const input = ref<IButton>(btnValue);
@@ -108,7 +101,6 @@ export default defineComponent({
         return {
             inputInterceptor,
             currScreenValue,
-            layout,
         };
     },
 });
@@ -122,13 +114,13 @@ export default defineComponent({
         position: relative;
         min-height: 100vh;
         min-width: 100vw;
+        display: flex;
+        justify-content: center;
+        align-items: center;
         #calculator {
             max-height: 85vh;
-            position: absolute;
             height: auto;
-            left: 50%;
-            top: 50%;
-            transform: translate(-50%, -50%);
+            margin:auto;
             border-radius: $mainRadius;
         }
     }

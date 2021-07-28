@@ -15,16 +15,15 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref } from 'vue';
+// eslint-disable-next-line no-unused-vars
+import { defineComponent, nextTick, reactive, ref } from 'vue';
 import store from '@/composables/store';
 
 export default defineComponent({
     setup() {
-        const { setCurrentLayout, state: { currentLayout } } = store();
-
+        const { setCurrentLayout, state: { currentLayout }, getCurrentVars } = store();
+        const currentVars = reactive(getCurrentVars);
         let activeTheme = ref<number>(Number(currentLayout.value.slice(-1)));
-        // setCurrentLayout(`Layout${activeTheme.value}`);
-
         let dotMovingClass = ref<string>('');
         let slideAmount = ref<string>('');
 
@@ -40,7 +39,8 @@ export default defineComponent({
                 activeTheme.value = theme;
                 dotMovingClass.value = '';
                 slideAmount.value = '0px';
-                setCurrentLayout(`Layout${theme}`);
+                setCurrentLayout(`layout${theme}`);
+                console.log('in timeout', currentVars);
             }, 300);
         };
         return {
@@ -49,6 +49,7 @@ export default defineComponent({
             activeTheme,
             changeTheme,
             slideAmount,
+            currentVars
         };
     },
 });
@@ -56,7 +57,6 @@ export default defineComponent({
 
 <style lang="scss" scoped >
     .toggle-slider {
-        background: $screenAndToggleBackground;
         padding: 0.25rem;
         display: flex;
         flex-direction: row;
@@ -84,7 +84,6 @@ export default defineComponent({
     }
     .toggle-dot {
         visibility: hidden;
-        background: $equalBcg;
         border-radius: 50%;
         height: 15px;
         width: 15px;
@@ -93,13 +92,10 @@ export default defineComponent({
         }
         &.right{
             position: absolute;
-            // transform:translateX(v-bind(slideAmount));
             transition: all .3s ease-out;
         }
         &.left{
             position: absolute;
-            // transform:translateX(-100px);
-            // transform:translateX(v-bind(slideAmount));
             transition: all .3s ease-out;
         }
     }

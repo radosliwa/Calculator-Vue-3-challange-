@@ -25,14 +25,13 @@ export default {
 
 <style lang="scss" scoped>
 .screen {
-    background: $screenAndToggleBackground;
+    // background: $screenAndToggleBackground;
     border-radius: $mainRadius;
     padding: 1rem;
     min-height: 95px;
     display: flex;
     justify-content: flex-end;
     &_content {
-        color: $keyWhiteBcg;
         font-size: 42px;
         font-weight: 700;
     }

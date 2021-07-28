@@ -1,18 +1,21 @@
 import { computed, reactive, toRefs } from 'vue';
+import { varsConfig, IVars } from '@/varsConfig';
+
+type TLayout = 'layout1'|'layout2'|'layout3'
 
 const state = reactive({
-    currentLayout: 'Layout1',
+    currentLayout: 'layout1' as TLayout,
 });
-
-// const getCurrLayout = computed(() => state.currentLayout);
 
 export default () => {
     const setCurrentLayout = (layout:string) => {
-        state.currentLayout = layout;
-        console.log('LAYOut in STORE', state.currentLayout);
+        state.currentLayout = layout.toLowerCase() as TLayout;
     };
+    const getCurrentVars = computed(():IVars => varsConfig[state.currentLayout]);
+
     return {
         state: toRefs(state),
         setCurrentLayout,
+        getCurrentVars
     };
 };
