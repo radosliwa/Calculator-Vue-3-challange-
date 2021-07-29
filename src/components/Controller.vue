@@ -55,7 +55,6 @@ export default defineComponent({
         border-radius: $mainRadius;
         column-gap: 1rem;
         row-gap: 1rem;
-        background-color: $deviceBackground;
         margin-top: 1.5rem;
     }
 </style>

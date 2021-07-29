@@ -14,7 +14,6 @@
     }
     font-weight: 800;
     font-size: $mainSize;
-    box-shadow: $keyShadowMain;
     transition: all 0.1s ease-out;
     &:hover:not(.active) {
         box-shadow: $keyShadowMainHover;
@@ -22,20 +21,5 @@
     &.active {
         transform: scale(0.95);
         box-shadow: 0px 5px 0px rgba(25, 25, 25, 0.5);
-    }
-    &-equal {
-        // background-color: $equalBcg;
-        box-shadow: 0px 5px 0px $equalShadow;
-        &:hover:not(.active) {
-            box-shadow: 0px 8px 0px $equalShadow;
-        }
-    }
-    &-del,
-    &-reset {
-        background-color: $keyBlueBcg;
-        // color: $keyWhiteBcg;
-        &:hover:not(.active) {
-            box-shadow: $keyShadowMainHover;
-        }
     }
 }

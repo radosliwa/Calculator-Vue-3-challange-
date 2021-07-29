@@ -25,7 +25,6 @@ export default {
 
 <style lang="scss" scoped>
 .screen {
-    // background: $screenAndToggleBackground;
     border-radius: $mainRadius;
     padding: 1rem;
     min-height: 95px;

@@ -71,7 +71,6 @@ export default defineComponent({
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        align-items: center;
         cursor: pointer;
         width: 25px;
     }
