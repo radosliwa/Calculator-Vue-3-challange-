@@ -41,7 +41,7 @@ export default defineComponent({
                 slideAmount.value = '0px';
                 setCurrentLayout(`layout${theme}`);
                 console.log('in timeout', currentVars);
-            }, 300);
+            }, 200);
         };
         return {
             themes: [1, 2, 3],

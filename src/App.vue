@@ -97,12 +97,12 @@ export default defineComponent({
             operator.value = null;
             wasOperatorSelected.value = !!operator.value;
         }
-
         return {
             inputInterceptor,
             currScreenValue,
         };
     },
+
 });
 </script>
 
@@ -110,10 +110,7 @@ export default defineComponent({
     @import './assets/styles/main.scss';
     #app {
         font-family: 'Spartan';
-        background: $mainBackground;
         position: relative;
-        min-height: 100vh;
-        min-width: 100vw;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -122,6 +119,7 @@ export default defineComponent({
             height: auto;
             margin:auto;
             border-radius: $mainRadius;
+            max-width: 520px;
         }
     }
 </style>

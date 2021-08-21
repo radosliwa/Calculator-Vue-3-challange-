@@ -21,11 +21,10 @@ export default defineComponent({
 
 <style lang="scss" scoped>
 .toggle{
-    color:white;
     display: flex;
     justify-content: flex-end;
     align-items: center;
-    margin-bottom: .25rem;
+    margin-bottom: 1rem;
     .title{
         margin-right: 1rem;
     }

@@ -15,11 +15,4 @@
     font-weight: 800;
     font-size: $mainSize;
     transition: all 0.1s ease-out;
-    &:hover:not(.active) {
-        box-shadow: $keyShadowMainHover;
-    }
-    &.active {
-        transform: scale(0.95);
-        box-shadow: 0px 5px 0px rgba(25, 25, 25, 0.5);
-    }
 }

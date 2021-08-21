@@ -12,7 +12,7 @@ interface IConfig {
 const varsConfig: IConfig = {
     layout1: {
         /* backgrounds */
-        mainBackground: '#E6E6E6',
+        mainBackground: '#3A4764',
         toggleBackground: '#182034',
         keypadBackground: '#182034',
         screenBackground: '#182034',
@@ -24,8 +24,10 @@ const varsConfig: IConfig = {
         /* keys */
         keyMainCol: '#000',
         keyDelCol: '#FFF',
+        keyEqualCol: '#FFF',
+        /* text */
         textScreen: '#FFF',
-        textWhite: '#FFF',
+        textToggle: '#FFF'
 
     } as IVars,
     layout2: {
@@ -33,33 +35,35 @@ const varsConfig: IConfig = {
         mainBackground: '#E6E6E6',
         toggleBackground: '#D1CCCC',
         keypadBackground: '#D1CCCC',
-        screenBackground: '#EDEDED',
-        keyMainBcg: '#377F86',
-        keyDelBcg: '#637097',
+        screenBackground: '#D1CCCC',
+        keyMainBcg: '#E5E4E1',
+        keyDelBcg: '#377F86',
         keyEqualBcg: '#CA5502',
         /* shadows */
         keyEqualShadow: '#893901',
         /* keys */
         keyMainCol: '#000',
         keyDelCol: '#FFF',
+        /* text */
         textScreen: '#FFF',
-        textWhite: '#FFF',
+        textToggle: '#000'
     } as IVars,
     layout3: {
-        // backgrounds
-        screenAndToggleBackground: 'red',
-        // $mainBackground: hsl(222, 26%, 31%),
-        // $deviceBackground: hsl(223, 31%, 20%),
-        // // keys
-        // $keyBcg: hsl(225, 21%, 49%),
-        // $keyShadowMain: 0px 5px 0px rgba(64, 78, 114, 0.6),
-        // $keyShadowMainHover: 0px 8px 0px rgba(52, 65, 99, 1),
-        // $keyShadowMainActive: 0px 5px 0px black,
-        // $keyWhiteBcg: #F0F0F0,
-        // $keyBlueBcg: hsl(225, 21%, 49%),
-        // $keyBlueShadow: 0px 5px 0px hsl(225, 21%, 49%),
-        // $keyEqualBcg:hsl(6, 63%, 50%),
-        // $equalShadow:hsl(6, 70%, 34%);
+        /* backgrounds */
+        // 1D0934
+        mainBackground: '#160628',
+        toggleBackground: '#160628',
+        keypadBackground: '#1D0934',
+        screenBackground: '#160628',
+        keyMainBcg: '#341C4F',
+        keyDelBcg: '#58077D',
+        keyEqualBcg: '#00E0D1',
+        /* shadows */
+        keyEqualShadow: '#893901',
+        /* keys */
+        keyMainCol: '#FFE53D',
+        keyDelCol: '#FFF',
+        textScreen: '#FFE53D'
     } as IVars
 
 };

@@ -94,6 +94,8 @@ module.exports = {
         'global-require': 'off',
         'no-use-before-define': 'off',
         'no-useless-escape': 'off',
+        'no-trailing-spaces': 'warn',
+        'no-unused-vars': 'warn',
         'import/no-extraneous-dependencies': [
             0,
             {
