@@ -5,7 +5,7 @@ module.exports = {
             sass: {
                 sourceMap: true,
                 data: `
-            @import "./src/assets/styles/_vars.scss";
+            @import "./src/assets/styles/utils/_vars.scss";
           `,
             },
         },

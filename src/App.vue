@@ -11,7 +11,7 @@
 
 <script lang="ts">
 // eslint-disable-next-line no-unused-vars
-import { reactive, ref, defineComponent, markRaw, computed, defineAsyncComponent, watch, Component } from 'vue';
+import { reactive, ref, defineComponent, markRaw, computed, watch, Component } from 'vue';
 
 // layouts
 import Layout from '@/layouts/Layout.vue';
@@ -107,7 +107,7 @@ export default defineComponent({
 </script>
 
 <style lang="scss">
-    @import './assets/styles/main.scss';
+    @import '@/assets/styles/main.scss';
     #app {
         font-family: 'Spartan';
         position: relative;

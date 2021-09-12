@@ -1,5 +1,5 @@
 import { computed, reactive, toRefs } from 'vue';
-import { varsConfig, IVars } from '@/varsConfig';
+import { varsConfig, IVars } from '@/assets/styles/varsConfig';
 
 type TLayout = 'layout1'|'layout2'|'layout3'
 

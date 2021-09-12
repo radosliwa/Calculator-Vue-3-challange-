@@ -5,7 +5,7 @@
             :key="el + index"
             tabindex="0"
             role="button"
-            :class="[`button button-${el.name}`, { active: el.value === currentValue }]"
+            :class="[`button button--${currentLayout} button-${el.name} `, { active: el.value === currentValue }]"
             @click="clickHandler(el)"
         >
             {{ el.value }}
@@ -15,8 +15,11 @@
 
 <script lang="ts">
 import { ref, defineComponent } from 'vue';
-
+// composables
+import store from '@/composables/store';
+// types
 import { IButton } from '@/types';
+// helpers
 import { config } from '../buttonsConfig';
 
 export default defineComponent({
@@ -32,17 +35,17 @@ export default defineComponent({
             }
             emit('key-value', currentValue);
         };
+        const {
+            state: { currentLayout },
+        } = store();
         return {
             clickHandler,
             currentValue,
+            currentLayout,
+            config
         };
     },
     emits: ['key-value'],
-    data() {
-        return {
-            config, // 2
-        };
-    },
 });
 </script>
 

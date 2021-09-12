@@ -27,7 +27,8 @@ const varsConfig: IConfig = {
         keyEqualCol: '#FFF',
         /* text */
         textScreen: '#FFF',
-        textToggle: '#FFF'
+        textToggle: '#FFF',
+        toggleDot: '#FFF'
 
     } as IVars,
     layout2: {
@@ -46,15 +47,15 @@ const varsConfig: IConfig = {
         keyDelCol: '#FFF',
         /* text */
         textScreen: '#FFF',
-        textToggle: '#000'
+        textToggle: '#000',
+        toggleDot: '#CA5502'
     } as IVars,
     layout3: {
         /* backgrounds */
-        // 1D0934
         mainBackground: '#160628',
-        toggleBackground: '#160628',
+        toggleBackground: '#1D0934',
         keypadBackground: '#1D0934',
-        screenBackground: '#160628',
+        screenBackground: '#1D0934',
         keyMainBcg: '#341C4F',
         keyDelBcg: '#58077D',
         keyEqualBcg: '#00E0D1',
