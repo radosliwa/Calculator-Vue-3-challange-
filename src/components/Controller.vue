@@ -5,11 +5,12 @@
             :key="el + index"
             tabindex="0"
             role="button"
-            :class="[`button button--${currentLayout} button-${el.name} `, { active: el.value === currentValue }]"
+            :class="[`button button--${currentLayout} button-${el.name} `, { active: currentValue?.value && el.value === currentValue.value}]"
             @click="clickHandler(el)"
         >
             {{ el.value }}
         </div>
+        <!-- <p>{{ currentValue?.value ?? null }}</p> -->
     </div>
 </template>
 
@@ -36,7 +37,7 @@ export default defineComponent({
             emit('key-value', currentValue);
         };
         const {
-            state: { currentLayout },
+            state: { currentLayout }
         } = store();
         return {
             clickHandler,
@@ -45,19 +46,19 @@ export default defineComponent({
             config
         };
     },
-    emits: ['key-value'],
+    emits: ['key-value']
 });
 </script>
 
 <style lang="scss">
-    .controller {
-        display: grid;
-        grid-template-columns: 1fr 1fr 1fr 1fr;
-        grid-template-rows: 1fr;
-        padding: 1.25rem;
-        border-radius: $mainRadius;
-        column-gap: 1rem;
-        row-gap: 1rem;
-        margin-top: 1.5rem;
-    }
+.controller {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr;
+    padding: 1.25rem;
+    border-radius: $mainRadius;
+    column-gap: 1rem;
+    row-gap: 1rem;
+    margin-top: 1.5rem;
+}
 </style>

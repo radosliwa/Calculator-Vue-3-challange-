@@ -45,8 +45,9 @@ const varsConfig: IConfig = {
         /* keys */
         keyMainCol: '#000',
         keyDelCol: '#FFF',
+        keyEqualCol: '#FFF',
         /* text */
-        textScreen: '#FFF',
+        textScreen: '#000',
         textToggle: '#000',
         toggleDot: '#CA5502'
     } as IVars,
@@ -64,7 +65,10 @@ const varsConfig: IConfig = {
         /* keys */
         keyMainCol: '#FFE53D',
         keyDelCol: '#FFF',
-        textScreen: '#FFE53D'
+        textScreen: '#FFE53D',
+        keyEqualCol: '#FFF',
+        textToggle: '#FFE53D'
+
     } as IVars
 
 };

@@ -53,6 +53,8 @@ export default defineComponent({
 
 .button-equal {
     background: v-bind('getCurrentVars.keyEqualBcg');
+    color: v-bind('getCurrentVars.keyEqualCol');
+
 }
 
 .controller {
