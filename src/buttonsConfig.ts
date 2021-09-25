@@ -1,6 +1,6 @@
 import { IButton } from './types';
 
-export const config = [
+export const config: IButton[] = [
     {
         value: 7,
         type: 'number',
@@ -107,4 +107,4 @@ export const config = [
         name: 'equal',
 
     },
-] as IButton[];
+];

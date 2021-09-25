@@ -11,7 +11,7 @@
 
 <script lang="ts">
 // eslint-disable-next-line no-unused-vars
-import { reactive, ref, defineComponent, markRaw, computed, watch, Component } from 'vue';
+import { reactive, ref, defineComponent, markRaw, computed, Component } from 'vue';
 
 // layouts
 import Layout from '@/layouts/Layout.vue';

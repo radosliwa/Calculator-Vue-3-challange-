@@ -29,8 +29,7 @@ const varsConfig: IConfig = {
         textScreen: '#FFF',
         textToggle: '#FFF',
         toggleDot: '#FFF'
-
-    } as IVars,
+    },
     layout2: {
         /* backgrounds */
         mainBackground: '#E6E6E6',
@@ -50,7 +49,7 @@ const varsConfig: IConfig = {
         textScreen: '#000',
         textToggle: '#000',
         toggleDot: '#CA5502'
-    } as IVars,
+    },
     layout3: {
         /* backgrounds */
         mainBackground: '#160628',
@@ -68,9 +67,7 @@ const varsConfig: IConfig = {
         textScreen: '#FFE53D',
         keyEqualCol: '#FFF',
         textToggle: '#FFE53D'
-
-    } as IVars
-
+    }
 };
 
 export { IVars, IConfig, varsConfig };

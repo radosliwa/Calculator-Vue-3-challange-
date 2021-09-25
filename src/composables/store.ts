@@ -3,8 +3,8 @@ import { varsConfig, IVars } from '@/assets/styles/varsConfig';
 
 type TLayout = 'layout1'|'layout2'|'layout3'
 
-const state = reactive({
-    currentLayout: 'layout1' as TLayout,
+const state = reactive<Record<string, TLayout>>({
+    currentLayout: 'layout1',
 });
 
 export default () => {

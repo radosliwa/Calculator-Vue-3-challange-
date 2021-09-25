@@ -30,6 +30,11 @@
     --boxShadowBtnEqual2: var(--shadowConfig) var(--boxShadowColorEqual2);
     --boxShadowBtnEqualHover2: var(--shadowConfigHover) var(--boxShadowBtnEqual2);
     // l3
+    --boxShadowColor3: 135, 28, 156;
+    --boxShadowColorEqual3: #00E0D1;
+    --boxShadowBtn3: var(--shadowConfig) rgba(var(--boxShadowColor3), .9);
+    --boxShadowBtnHover3: var(--shadowConfigHover) rgba(var(--boxShadowColor3), .9);
+    --boxShadowBtnActive3: var(--shadowConfigActive) rgba(var(--boxShadowColor3), 1);
 }
 
 .button {
@@ -40,7 +45,7 @@
     }
     font-weight: 800;
     font-size: $mainSize;
-    transition: all 0.1s ease-out;
+    transition: all .3s ease-out;
     &--layout1 {
         box-shadow: var(--boxShadowBtn);
         &:hover:not(.active) {
@@ -62,6 +67,10 @@
         &:hover:not(.active) {
             box-shadow: var(--boxShadowBtnHover2);
         }
+        &.active {
+            transform: scale(0.95);
+            box-shadow: var(--boxShadowBtnActive2);
+        }
         &.button-equal {
             box-shadow: var(--shadowConfig) var(--boxShadowColorEqual2);
             &:hover:not(.active) {
@@ -70,14 +79,18 @@
         }
     }
     &--layout3 {
-        box-shadow: var(--boxShadow) rgb(135, 28, 156);
+        box-shadow: var(--boxShadowBtn3);
         &:hover:not(.active) {
-            box-shadow: 0px 8px 0px rgb(135, 28, 156);
+            box-shadow: var(--boxShadowBtnHover3);
+        }
+        &.active {
+            transform: scale(0.95);
+            box-shadow: var(--boxShadowBtnActive3);
         }
         &.button-equal {
-            box-shadow: var(--boxShadow) rgba(#00E0D1, 0.9);
+            box-shadow: var(--shadowConfig) var(--boxShadowColorEqual3);
             &:hover:not(.active) {
-                box-shadow: 0px 8px 0px rgba(#00E0D1, 0.9);
+                box-shadow: var(--shadowConfigHover) rgba(var(--boxShadowColorEqual3), .8);
             }
         }
     }
