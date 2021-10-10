@@ -95,7 +95,9 @@ module.exports = {
         'no-use-before-define': 'off',
         'no-useless-escape': 'off',
         'no-trailing-spaces': 'warn',
+        'no-undef': 'warn',
         'no-unused-vars': 'warn',
+        'semi': 'warn',
         'import/no-extraneous-dependencies': [
             0,
             {
@@ -129,12 +131,12 @@ module.exports = {
     },
 
     'extends': [
-      'airbnb-base',
-      'plugin:vue/vue3-strongly-recommended',
-      '@vue/typescript'
+        'airbnb-base',
+        'plugin:vue/vue3-strongly-recommended',
+        '@vue/typescript'
     ],
 
     parserOptions: {
-      parser: '@typescript-eslint/parser'
+        parser: '@typescript-eslint/parser'
     }
 }

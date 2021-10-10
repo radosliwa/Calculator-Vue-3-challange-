@@ -5,7 +5,7 @@
             :key="el + index"
             tabindex="0"
             role="button"
-            :class="[`button button--${currentLayout} button-${el.name} `, { active: currentValue?.value && el.value === currentValue.value}]"
+            :class="[`button button--${currentLayout} button-${el.name} `, { active: setButtonState(el)}]"
             @click="clickHandler(el)"
         >
             {{ el.value }}
@@ -36,10 +36,12 @@ export default defineComponent({
             }
             emit('key-value', currentValue);
         };
+        const setButtonState = (btn: IButton) : boolean => (currentValue?.value ? btn.value === currentValue.value.value : false);
         const {
             state: { currentLayout }
         } = store();
         return {
+            setButtonState,
             clickHandler,
             currentValue,
             currentLayout,

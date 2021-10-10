@@ -99,7 +99,7 @@ export default defineComponent({
         }
         return {
             inputInterceptor,
-            currScreenValue,
+            currScreenValue, 
         };
     },
 
