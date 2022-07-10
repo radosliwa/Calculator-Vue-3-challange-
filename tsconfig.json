@@ -13,7 +13,7 @@
     "sourceMap": true,
     "baseUrl": ".",
     "types": [
-      "webpack-env",
+      "vite-client",
 
     ],
     "paths": {
@@ -36,5 +36,6 @@
     "tests/**/*.tsx"],
   "exclude": [
     "node_modules",
+    "__tests__",
   ]
 }
