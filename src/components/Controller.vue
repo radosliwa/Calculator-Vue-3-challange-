@@ -1,8 +1,10 @@
 <template>
-    <div class="controller">
+    <div id="controller"
+         class="grid grid-cols-4 grid-rows-1 gap-6 p-5 mt-6"
+    >
         <div
             v-for="(el, index) in config"
-            :key="el + index"
+            :key="index"
             tabindex="0"
             role="button"
             :class="[`button button--${currentLayout} button-${el.name} `, { active: setButtonState(el)}]"
@@ -53,14 +55,7 @@ export default defineComponent({
 </script>
 
 <style lang="scss">
-.controller {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    grid-template-rows: 1fr;
-    padding: 1.25rem;
+#controller {
     border-radius: $mainRadius;
-    column-gap: 1rem;
-    row-gap: 1rem;
-    margin-top: 1.5rem;
 }
 </style>

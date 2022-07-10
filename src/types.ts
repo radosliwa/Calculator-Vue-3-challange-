@@ -1,9 +1,15 @@
-type TText = 'number'|'operator'|'text'| 'function'
-type TValue = number|string
+// type TText = 'number' | 'operator' | 'text' | 'function'
+const enum InputTypes {
+    number = 'number',
+    operator = 'operator',
+    text = 'text',
+    function = 'function',
+}
+type TValue = number | string
 interface IButton {
     value: TValue;
-    type: TText,
+    type: keyof typeof InputTypes,
     name: string,
-    altValue?:TValue
+    altValue?: TValue
 }
-export { TText, TValue, IButton };
+export { TValue, IButton, InputTypes };

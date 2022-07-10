@@ -1,5 +1,7 @@
 import { createApp } from 'vue';
-import App from './App.vue';
+import '@/assets/styles/main.scss';
+import App from '@/App.vue';
+import '@/index.css';
 
 const app = createApp(App);
 app.config.errorHandler = (err, vm, info) => {

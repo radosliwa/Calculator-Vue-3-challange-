@@ -36,7 +36,7 @@ export default defineComponent({
     align-items: center;
 }
 
-.screen {
+#screen {
     background: v-bind('getCurrentVars.screenBackground');
     color: v-bind('getCurrentVars.textScreen');
 }
@@ -57,7 +57,7 @@ export default defineComponent({
 
 }
 
-.controller {
+#controller {
     background: v-bind('getCurrentVars.keypadBackground');
 }
 

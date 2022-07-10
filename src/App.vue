@@ -1,7 +1,10 @@
 /* eslint-disable no-unused-vars */
 <template>
     <Layout>
-        <div id="calculator">
+        <div id="calculator"
+             class="relative flex flex-col justify-center
+             max-h-[85vh] h-auto w-auto max-w-[520px]"
+        >
             <Toggle />
             <Screen :number="currScreenValue" />
             <Controller @key-value="inputInterceptor" />
@@ -11,9 +14,9 @@
 
 <script lang="ts">
 // eslint-disable-next-line no-unused-vars
-import { reactive, ref, defineComponent, markRaw, computed, Component } from 'vue';
+import { reactive, ref, defineComponent } from 'vue';
 
-// layouts
+// layout
 import Layout from '@/layouts/Layout.vue';
 
 // components
@@ -33,11 +36,11 @@ export default defineComponent({
         Controller,
     },
     setup() {
-        let allValuesArr = reactive<TValue[]>([]);
-        let accumulatedValue = ref<string | number | null>('');
-        let currScreenValue = ref<string | number | null>('');
-        let operator = ref<null | TValue>(null);
-        let wasOperatorSelected = ref<boolean>(!!operator.value);
+        const allValuesArr = ref<TValue[]>([]);
+        const accumulatedValue = ref<string | number | null>('');
+        const currScreenValue = ref<string | number>('');
+        const operator = ref<null | TValue>(null);
+        const wasOperatorSelected = ref<boolean>(!!operator.value);
 
         const inputInterceptor = (btnValue: IButton) => {
             const input = ref<IButton>(btnValue);
@@ -59,12 +62,12 @@ export default defineComponent({
                 accumulatedValue.value = eval(`${accumulatedValue.value} ${operator.value} ${Number(inputValue)}`);
                 // eslint-disable-next-line no-eval
                 currScreenValue.value = inputValue;
-                allValuesArr = [];
+                allValuesArr.value = [];
                 wasOperatorSelected.value = false;
                 break;
             default:
-                allValuesArr.push(inputValue);
-                currScreenValue.value = allValuesArr.join('');
+                allValuesArr.value.push(inputValue);
+                currScreenValue.value = allValuesArr.value.join('');
                 accumulatedValue.value = currScreenValue.value;
             }
         };
@@ -79,8 +82,8 @@ export default defineComponent({
         const functionHandler = (currFunction: string) => {
             switch (currFunction) {
             case 'del':
-                allValuesArr.pop();
-                currScreenValue.value = allValuesArr.join('');
+                allValuesArr.value.pop();
+                currScreenValue.value = allValuesArr.value.join('');
                 break;
             case 'reset':
                 reset();
@@ -91,7 +94,7 @@ export default defineComponent({
         };
 
         function reset() {
-            allValuesArr = [];
+            allValuesArr.value = [];
             accumulatedValue.value = '';
             currScreenValue.value = '';
             operator.value = null;
@@ -99,7 +102,7 @@ export default defineComponent({
         }
         return {
             inputInterceptor,
-            currScreenValue, 
+            currScreenValue,
         };
     },
 
@@ -107,19 +110,17 @@ export default defineComponent({
 </script>
 
 <style lang="scss">
-    @import '@/assets/styles/main.scss';
     #app {
-        font-family: 'Spartan';
-        position: relative;
-        display: flex;
-        justify-content: center;
-        align-items: center;
+        // position: relative;
+        // display: flex;
+        // justify-content: center;
+        // align-items: center;
         #calculator {
-            max-height: 85vh;
-            height: auto;
-            margin:auto;
+            // max-height: 85vh;
+            // height: auto;
+            // margin:auto;
+            // max-width: 520px;
             border-radius: $mainRadius;
-            max-width: 520px;
         }
     }
 </style>
