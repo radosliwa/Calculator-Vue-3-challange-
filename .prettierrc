@@ -3,7 +3,7 @@
     "trailingComma": "none",
     "singleQuote": true,
     "semi": false,
-    "printWidth": 160,
+    "printWidth": 200,
     "tabWidth": 4,
     "error": { 
         "endOfLine": "auto"

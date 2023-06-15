@@ -8,15 +8,12 @@
 // vue utils
 import { defineComponent, ref } from 'vue';
 // composables
-import store from '@/composables/store';
+import { useLayout } from '@/composables/store';
 
 export default defineComponent({
     name: 'Layout',
     setup() {
-        const {
-            state: { currentLayout },
-            getCurrentVars
-        } = store();
+        const { currentLayout, getCurrentVars } = useLayout();
         const layout = ref(currentLayout);
         return {
             layout,

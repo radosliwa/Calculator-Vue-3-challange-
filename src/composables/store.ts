@@ -1,20 +1,23 @@
-import { computed, reactive, toRefs } from 'vue';
+import { computed, ref } from 'vue';
 import { varsConfig, IVars } from '@/assets/styles/varsConfig';
 
 type TLayout = 'layout1'|'layout2'|'layout3'
+interface IState {
+    currentLayout: TLayout;
+}
 
-const state = reactive<Record<string, TLayout>>({
+const state = ref<IState>({
     currentLayout: 'layout1',
 });
 
-export default () => {
+export const useLayout = () => {
     const setCurrentLayout = (layout:string) => {
-        state.currentLayout = layout.toLowerCase() as TLayout;
+        state.value.currentLayout = layout.toLowerCase() as TLayout;
     };
-    const getCurrentVars = computed(():IVars => varsConfig[state.currentLayout]);
+    const getCurrentVars = computed(():IVars => varsConfig[state.value.currentLayout]);
 
     return {
-        state: toRefs(state),
+        currentLayout: computed(() => state.value.currentLayout),
         setCurrentLayout,
         getCurrentVars
     };

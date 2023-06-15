@@ -1,6 +1,6 @@
 <template>
     <div id="controller"
-         class="grid grid-cols-4 grid-rows-1 gap-6 p-5 mt-6"
+         class="mt-6 grid grid-cols-4 grid-rows-1 gap-6 p-5"
     >
         <div
             v-for="(el, index) in config"
@@ -19,7 +19,7 @@
 <script lang="ts">
 import { ref, defineComponent } from 'vue';
 // composables
-import store from '@/composables/store';
+import { useLayout } from '@/composables/store';
 // types
 import { IButton } from '@/types';
 // helpers
@@ -39,9 +39,7 @@ export default defineComponent({
             emit('key-value', currentValue);
         };
         const setButtonState = (btn: IButton) : boolean => (currentValue?.value ? btn.value === currentValue.value.value : false);
-        const {
-            state: { currentLayout }
-        } = store();
+        const { currentLayout } = useLayout();
         return {
             setButtonState,
             clickHandler,

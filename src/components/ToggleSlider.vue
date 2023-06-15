@@ -17,11 +17,11 @@
 <script lang="ts">
 // eslint-disable-next-line no-unused-vars
 import { defineComponent, nextTick, reactive, ref } from 'vue';
-import store from '@/composables/store';
+import { useLayout } from '@/composables/store';
 
 export default defineComponent({
     setup() {
-        const { setCurrentLayout, state: { currentLayout }, getCurrentVars } = store();
+        const { setCurrentLayout, currentLayout, getCurrentVars } = useLayout();
         const currentVars = reactive(getCurrentVars);
         let activeTheme = ref<number>(Number(currentLayout.value.slice(-1)));
         let dotMovingClass = ref<string>('');
