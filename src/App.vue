@@ -2,8 +2,8 @@
 <template>
     <Layout>
         <div id="calculator"
-             class="relative flex flex-col justify-center
-             max-h-[85vh] h-auto w-auto max-w-[520px]"
+             class="relative flex h-auto max-h-[85vh]
+             w-auto max-w-[520px] flex-col justify-center"
         >
             <Toggle />
             <Screen :number="currScreenValue" />

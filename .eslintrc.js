@@ -5,7 +5,7 @@ module.exports = {
         browser: true,
         node: true
     },
-    // "plugins": ["tailwindcss"],
+    "plugins": ["tailwindcss"],
     extends: [
         'airbnb-base',
         'plugin:vue/vue3-recommended',
@@ -14,7 +14,7 @@ module.exports = {
     ignorePatterns: ['**/*.js.snap'],
 
     rules: {
-        // "tailwindcss/classnames-order": "error",
+        "tailwindcss/classnames-order": "error",
         // "tailwindcss/enforces-negative-arbitrary-values": "warn",
         // "tailwindcss/enforces-shorthand": "warn",
         // "tailwindcss/migration-from-tailwind-2": "warn",
