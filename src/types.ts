@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 // type TText = 'number' | 'operator' | 'text' | 'function'
 const enum InputTypes {
     number = 'number',

@@ -1,6 +1,6 @@
 <template>
     <div class="toggle-slider">
-        <div v-for="(theme, index) in themes"
+        <div v-for="(theme, index) in [1, 2, 3]"
              :key="theme + index"
              class="theme-col"
              @click="changeTheme(theme)"
@@ -14,45 +14,28 @@
     </div>
 </template>
 
-<script lang="ts">
-// eslint-disable-next-line no-unused-vars
-import { defineComponent, nextTick, reactive, ref } from 'vue';
+<script setup lang="ts">
+import { ref } from 'vue';
 import { useLayout } from '@/composables/store';
 
-export default defineComponent({
-    setup() {
-        const { setCurrentLayout, currentLayout, getCurrentVars } = useLayout();
-        const currentVars = reactive(getCurrentVars);
-        let activeTheme = ref<number>(Number(currentLayout.value.slice(-1)));
-        let dotMovingClass = ref<string>('');
-        let slideAmount = ref<string>('');
+const { setCurrentLayout, currentLayout } = useLayout();
+const activeTheme = ref<number>(Number(currentLayout.value.slice(-1)));
+const dotMovingClass = ref('');
+const slideAmount = ref('');
 
-        const changeTheme = (theme: number) => {
-            if (theme > activeTheme.value) {
-                dotMovingClass.value = 'right';
-                slideAmount.value = `${25 * (theme - activeTheme.value)}px`;
-            } else {
-                dotMovingClass.value = 'left';
-                slideAmount.value = `-${25 * (activeTheme.value - theme)}px`;
-            }
-            setTimeout(() => {
-                activeTheme.value = theme;
-                dotMovingClass.value = '';
-                slideAmount.value = '0px';
-                setCurrentLayout(`layout${theme}`);
-                console.log('in timeout', currentVars);
-            }, 200);
-        };
-        return {
-            themes: [1, 2, 3],
-            dotMovingClass,
-            activeTheme,
-            changeTheme,
-            slideAmount,
-            currentVars
-        };
-    },
-});
+const changeTheme = (theme: number) => {
+    const isRight = theme > activeTheme.value;
+    dotMovingClass.value = isRight ? 'right' : 'left';
+    slideAmount.value = isRight ? `${25 * (theme - activeTheme.value)}px`
+        : `-${25 * (activeTheme.value - theme)}px`;
+    setTimeout(() => {
+        activeTheme.value = theme;
+        dotMovingClass.value = '';
+        slideAmount.value = '0px';
+        setCurrentLayout(`layout${theme}`);
+    }, 200);
+};
+
 </script>
 
 <style lang="scss" scoped >

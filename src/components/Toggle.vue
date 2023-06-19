@@ -7,16 +7,9 @@
     </div>
 </template>
 
-<script lang="ts">
-import { defineComponent } from 'vue';
+<script setup lang="ts">
 import ToggleSlider from '@/components/ToggleSlider.vue';
 
-export default defineComponent({
-    name: 'Toggle',
-    components: {
-        ToggleSlider,
-    },
-});
 </script>
 
 <style lang="scss" scoped>

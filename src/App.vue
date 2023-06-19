@@ -12,10 +12,8 @@
     </Layout>
 </template>
 
-<script lang="ts">
-// eslint-disable-next-line no-unused-vars
-import { reactive, ref, defineComponent } from 'vue';
-
+<script setup lang="ts">
+import { ref } from 'vue';
 // layout
 import Layout from '@/layouts/Layout.vue';
 
@@ -27,86 +25,71 @@ import Screen from './components/Screen.vue';
 // types
 import { IButton, TValue } from './types';
 
-export default defineComponent({
-    name: 'App',
-    components: {
-        Layout,
-        Toggle,
-        Screen,
-        Controller,
-    },
-    setup() {
-        const allValuesArr = ref<TValue[]>([]);
-        const accumulatedValue = ref<string | number | null>('');
-        const currScreenValue = ref<string | number>('');
-        const operator = ref<null | TValue>(null);
-        const wasOperatorSelected = ref<boolean>(!!operator.value);
+const allValuesArr = ref<TValue[]>([]);
+const accumulatedValue = ref<string | number | null>('');
+const currScreenValue = ref<string | number>('');
+const operator = ref<null | TValue>(null);
+const wasOperatorSelected = ref<boolean>(!!operator.value);
 
-        const inputInterceptor = (btnValue: IButton) => {
-            const input = ref<IButton>(btnValue);
-            inputHandler(input.value);
-        };
-        const inputHandler = (input: IButton) => {
-            const inputValue = input.altValue ?? input.value;
-            const inputType = input.type;
-            const inputName = input.name;
-            switch (true) {
-            case inputType === 'operator':
-                operatorHandler(inputValue);
-                break;
-            case inputType === 'function':
-                functionHandler(inputName);
-                break;
-            case inputType === 'number' && wasOperatorSelected.value:
-                // eslint-disable-next-line no-eval
-                accumulatedValue.value = eval(`${accumulatedValue.value} ${operator.value} ${Number(inputValue)}`);
-                // eslint-disable-next-line no-eval
-                currScreenValue.value = inputValue;
-                allValuesArr.value = [];
-                wasOperatorSelected.value = false;
-                break;
-            default:
-                allValuesArr.value.push(inputValue);
-                currScreenValue.value = allValuesArr.value.join('');
-                accumulatedValue.value = currScreenValue.value;
-            }
-        };
+const inputInterceptor = (btnValue: IButton) => {
+    const input = ref<IButton>(btnValue);
+    inputHandler(input.value);
+};
+const inputHandler = (input: IButton) => {
+    const inputValue = input.altValue ?? input.value;
+    const inputType = input.type;
+    const inputName = input.name;
+    switch (true) {
+    case inputType === 'operator':
+        operatorHandler(inputValue);
+        break;
+    case inputType === 'function':
+        functionHandler(inputName);
+        break;
+    case inputType === 'number' && wasOperatorSelected.value:
+        // eslint-disable-next-line no-eval
+        accumulatedValue.value = eval(`${accumulatedValue.value} ${operator.value} ${Number(inputValue)}`);
+        // eslint-disable-next-line no-eval
+        currScreenValue.value = inputValue;
+        allValuesArr.value = [];
+        wasOperatorSelected.value = false;
+        break;
+    default:
+        allValuesArr.value.push(inputValue);
+        currScreenValue.value = allValuesArr.value.join('');
+        accumulatedValue.value = currScreenValue.value;
+    }
+};
 
-        const operatorHandler = (currOperator: TValue) => {
-            wasOperatorSelected.value = true;
-            accumulatedValue.value = accumulatedValue.value ?? Number(currScreenValue.value);
-            currScreenValue.value = accumulatedValue.value;
-            operator.value = currOperator;
-        };
+const operatorHandler = (currOperator: TValue) => {
+    wasOperatorSelected.value = true;
+    accumulatedValue.value = accumulatedValue.value ?? Number(currScreenValue.value);
+    currScreenValue.value = accumulatedValue.value;
+    operator.value = currOperator;
+};
 
-        const functionHandler = (currFunction: string) => {
-            switch (currFunction) {
-            case 'del':
-                allValuesArr.value.pop();
-                currScreenValue.value = allValuesArr.value.join('');
-                break;
-            case 'reset':
-                reset();
-                break;
-            default:
-                currScreenValue.value = null;
-            }
-        };
+const functionHandler = (currFunction: string) => {
+    switch (currFunction) {
+    case 'del':
+        allValuesArr.value.pop();
+        currScreenValue.value = allValuesArr.value.join('');
+        break;
+    case 'reset':
+        reset();
+        break;
+    default:
+        currScreenValue.value = null;
+    }
+};
 
-        function reset() {
-            allValuesArr.value = [];
-            accumulatedValue.value = '';
-            currScreenValue.value = '';
-            operator.value = null;
-            wasOperatorSelected.value = !!operator.value;
-        }
-        return {
-            inputInterceptor,
-            currScreenValue,
-        };
-    },
+function reset() {
+    allValuesArr.value = [];
+    accumulatedValue.value = '';
+    currScreenValue.value = '';
+    operator.value = null;
+    wasOperatorSelected.value = !!operator.value;
+}
 
-});
 </script>
 
 <style lang="scss">

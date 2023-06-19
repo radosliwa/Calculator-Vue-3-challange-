@@ -4,23 +4,14 @@
     </div>
 </template>
 
-<script lang="ts">
+<script setup lang="ts">
 // vue utils
-import { defineComponent, ref } from 'vue';
+import { ref } from 'vue';
 // composables
 import { useLayout } from '@/composables/store';
 
-export default defineComponent({
-    name: 'Layout',
-    setup() {
-        const { currentLayout, getCurrentVars } = useLayout();
-        const layout = ref(currentLayout);
-        return {
-            layout,
-            getCurrentVars
-        };
-    }
-});
+const { currentLayout, getCurrentVars } = useLayout();
+const layout = ref(currentLayout);
 </script>
 
 <style lang="scss">

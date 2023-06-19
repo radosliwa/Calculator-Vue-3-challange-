@@ -3,7 +3,8 @@ module.exports = {
 
     env: {
         browser: true,
-        node: true
+        node: true,
+        'vue/setup-compiler-macros': true
     },
     "plugins": ["tailwindcss"],
     extends: [
@@ -31,6 +32,7 @@ module.exports = {
                 allowCoexistStyle: true
             }
         ],
+        
         'vue/no-v-html': 0,
         'vue/no-use-v-if-with-v-for': [
             'warn',
@@ -79,7 +81,9 @@ module.exports = {
                 mjs: 'never',
                 jsx: 'never',
                 tsx: 'never',
-                vue: 'ignorePackages'
+                vue: 'ignorePackages',
+                css: 'ignorePackages',
+                scss: 'ignorePackages'
             }
         ],
         // 'sort-imports': ['error', {
