@@ -1,7 +1,7 @@
 <template>
     <div id="screen"
          ref="screen"
-         class="flex min-h-[95px] w-full justify-end p-4"
+         class="flex min-h-[95px] w-full justify-end p-4 rounded-md"
          :class="[{'justify-start overflow-x-hidden':isContentTooLong}]"
     >
         <span ref="content"
@@ -18,7 +18,7 @@ import { ref, computed, watch } from 'vue';
 
 // define props
 const props = defineProps<{
-    number: number;
+    number: number | string;
 }>();
 
 const screen = ref<HTMLDivElement | null>();
@@ -36,6 +36,6 @@ watch(() => props.number, () => {
 
 <style lang="scss" >
 #screen {
-    border-radius: $mainRadius;
+    // border-radius: $mainRadius;
 }
 </style>

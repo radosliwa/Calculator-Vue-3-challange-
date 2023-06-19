@@ -1,3 +1,37 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+	:root {
+		--primary: 58, 71, 100;
+		--secondary: 24, 32, 52;
+		--tertiary: 240, 240, 240;
+		--quaternary: 99, 112, 151;
+		--neutral: 0, 0, 0;
+		--positive: 208, 47, 47;
+	}
+	
+	body {
+		background-color: rgba(var(--primary), 1);
+		color: rgba(var(--neutral), 1);
+	}
+	
+	body.layout2 {
+		--primary: 230, 230, 230;
+		--secondary: 209, 204, 204;
+		--tertiary: 229, 228, 225;
+		--quaternary: 55, 127, 134;
+		--neutral: 0, 0, 0;
+		--positive: 202, 85, 2;
+	}
+	
+	body.layout3 {
+		--primary: 22, 6, 40;
+		--secondary: 29, 9, 52;
+		--tertiary: 52, 28, 79;
+		--quaternary: 88, 7, 125;
+		--neutral: 255, 229, 61;
+		--positive: 0, 224, 209;
+	}
+}

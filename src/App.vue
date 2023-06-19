@@ -3,7 +3,7 @@
     <Layout>
         <div id="calculator"
              class="relative flex h-auto max-h-[85vh]
-             w-auto max-w-[520px] flex-col justify-center"
+             w-auto max-w-[520px] flex-col justify-center rounded-md"
         >
             <Toggle />
             <Screen :number="currScreenValue" />
@@ -39,21 +39,21 @@ const inputHandler = (input: IButton) => {
     const inputValue = input.altValue ?? input.value;
     const inputType = input.type;
     const inputName = input.name;
-    switch (true) {
-    case inputType === 'operator':
+    switch (inputType) {
+    case 'operator':
         operatorHandler(inputValue);
         break;
-    case inputType === 'function':
+    case 'function':
         functionHandler(inputName);
         break;
-    case inputType === 'number' && wasOperatorSelected.value:
-        // eslint-disable-next-line no-eval
-        accumulatedValue.value = eval(`${accumulatedValue.value} ${operator.value} ${Number(inputValue)}`);
-        // eslint-disable-next-line no-eval
-        currScreenValue.value = inputValue;
-        allValuesArr.value = [];
-        wasOperatorSelected.value = false;
-        break;
+    case 'number':
+        if(wasOperatorSelected.value) {
+            accumulatedValue.value = eval(`${accumulatedValue.value} ${operator.value} ${Number(inputValue)}`);
+            currScreenValue.value = inputValue;
+            allValuesArr.value = [];
+            wasOperatorSelected.value = false;
+            break;
+        }
     default:
         allValuesArr.value.push(inputValue);
         currScreenValue.value = allValuesArr.value.join('');
@@ -93,17 +93,4 @@ function reset() {
 </script>
 
 <style lang="scss">
-    #app {
-        // position: relative;
-        // display: flex;
-        // justify-content: center;
-        // align-items: center;
-        #calculator {
-            // max-height: 85vh;
-            // height: auto;
-            // margin:auto;
-            // max-width: 520px;
-            border-radius: $mainRadius;
-        }
-    }
 </style>

@@ -1,29 +1,23 @@
 <template>
-    <div :class="['layout', layout]">
+    <div class="min-h-screen min-w-screen flex justify-center items-center bg-[var(--primary)]">
         <slot />
     </div>
 </template>
 
 <script setup lang="ts">
 // vue utils
-import { ref } from 'vue';
+import { ComputedRef, ref, watch } from 'vue';
 // composables
 import { useLayout } from '@/composables/store';
 
 const { currentLayout, getCurrentVars } = useLayout();
 const layout = ref(currentLayout);
+watch(currentLayout, () => {
+    document.body.className = currentLayout.value;
+}, { immediate: true });
 </script>
 
 <style lang="scss">
-.layout {
-    background-color: v-bind('getCurrentVars.mainBackground');
-    min-height: 100vh;
-    min-width: 100vw;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
 #screen {
     background: v-bind('getCurrentVars.screenBackground');
     color: v-bind('getCurrentVars.textScreen');
