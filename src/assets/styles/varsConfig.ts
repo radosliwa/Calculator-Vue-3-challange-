@@ -1,12 +1,8 @@
 interface IVars {
     [key: string]: string,
 }
-
 interface IConfig {
-    layout1: IVars;
-    layout2: IVars;
-    layout3: IVars;
-
+    [layout: `layout${number}`]: IVars;
 }
 
 const varsConfig: IConfig = {

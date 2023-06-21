@@ -1,15 +1,10 @@
 <template>
-    <div class="toggle-slider">
-        <div v-for="(theme, index) in [1, 2, 3]"
-             :key="theme + index"
-             class="theme-col"
-             @click="changeTheme(theme)"
-        >
+    <div class="toggle-slider flex rounded-[20px] p-[4px] w-[75px] h-[25px] relative">
+        <div v-for="(theme, index) in [1, 2, 3]" :key="theme + index"
+            class="flex justify-center items-center cursor-pointer w-[25px]" @click="changeTheme(theme)">
             <span class="theme-number">{{ theme }}</span>
-            <div class="toggle-dot"
-                 :class="[theme === activeTheme ? 'active':'', dotMovingClass]"
-                 :style="`transform:translateX(${slideAmount});`"
-            />
+            <div class="toggle-dot" :class="[theme === activeTheme ? 'active' : '', dotMovingClass]"
+                :style="`transform:translateX(${slideAmount});`" />
         </div>
     </div>
 </template>
@@ -19,66 +14,52 @@ import { ref } from 'vue';
 import { useLayout } from '@/composables/store';
 
 const { setCurrentLayout, currentLayout } = useLayout();
-const activeTheme = ref<number>(Number(currentLayout.value.slice(-1)));
+const activeTheme = ref(Number(currentLayout.value.slice(-1)));
 const dotMovingClass = ref('');
 const slideAmount = ref('');
 
 const changeTheme = (theme: number) => {
-    const isRight = theme > activeTheme.value;
-    dotMovingClass.value = isRight ? 'right' : 'left';
-    slideAmount.value = isRight ? `${25 * (theme - activeTheme.value)}px`
+    const isMovingRight = theme > activeTheme.value;
+    dotMovingClass.value = isMovingRight ? 'right' : 'left';
+    slideAmount.value = isMovingRight ? `${25 * (theme - activeTheme.value)}px`
         : `-${25 * (activeTheme.value - theme)}px`;
     setTimeout(() => {
         activeTheme.value = theme;
         dotMovingClass.value = '';
         slideAmount.value = '0px';
-        setCurrentLayout(`layout${theme}`);
+        setCurrentLayout(theme);
     }, 200);
 };
 
 </script>
 
 <style lang="scss" scoped >
-    .toggle-slider {
-        padding: 0.25rem;
-        display: flex;
-        flex-direction: row;
-        border-radius: 20px;
-        width: 75px;
-        height: 25px;
-        position: relative;
+.theme-number {
+    padding: 0 0.25rem;
+    position: absolute;
+    bottom: 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+
+.toggle-dot {
+    visibility: hidden;
+    border-radius: 50%;
+    height: 15px;
+    width: 15px;
+
+    &.active {
+        visibility: visible;
     }
-    .theme-col {
-        position: relative;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        cursor: pointer;
-        width: 25px;
-    }
-    .theme-number {
-        padding: 0 0.25rem;
+
+    &.right {
         position: absolute;
-        bottom: 20px;
-        font-size: 0.85rem;
-        font-weight: 600;
+        transition: all .3s ease-out;
     }
-    .toggle-dot {
-        visibility: hidden;
-        border-radius: 50%;
-        height: 15px;
-        width: 15px;
-        &.active {
-            visibility: visible;
-        }
-        &.right{
-            position: absolute;
-            transition: all .3s ease-out;
-        }
-        &.left{
-            position: absolute;
-            transition: all .3s ease-out;
-        }
+
+    &.left {
+        position: absolute;
+        transition: all .3s ease-out;
     }
+}
 </style>

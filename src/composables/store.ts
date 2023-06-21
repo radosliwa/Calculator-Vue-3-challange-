@@ -1,7 +1,7 @@
 import { computed, ref } from 'vue';
 import { varsConfig, IVars } from '@/assets/styles/varsConfig';
 
-type TLayout = 'layout1'|'layout2'|'layout3'
+type TLayout = `layout${number}`;
 interface IState {
     currentLayout: TLayout;
 }
@@ -11,10 +11,11 @@ const state = ref<IState>({
 });
 
 export const useLayout = () => {
-    const setCurrentLayout = (layout:string) => {
-        state.value.currentLayout = layout.toLowerCase() as TLayout;
+    const setCurrentLayout = (layout: number) => {
+        const currentLayout: TLayout = `layout${layout}`;
+        state.value.currentLayout = currentLayout;
     };
-    const getCurrentVars = computed(():IVars => varsConfig[state.value.currentLayout]);
+    const getCurrentVars = computed((): IVars => varsConfig[state.value.currentLayout]);
 
     return {
         currentLayout: computed(() => state.value.currentLayout),
