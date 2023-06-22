@@ -1,9 +1,9 @@
 <template>
-    <div class="toggle-slider flex rounded-[20px] p-[4px] w-[75px] h-[25px] relative">
+    <div class="toggle-slider flex rounded-[20px] p-[4px] w-[75px] h-[25px] relative bg-[var(--toggleBackground)]">
         <div v-for="(theme, index) in [1, 2, 3]" :key="theme + index"
             class="flex justify-center items-center cursor-pointer w-[25px]" @click="changeTheme(theme)">
             <span class="theme-number">{{ theme }}</span>
-            <div class="toggle-dot" :class="[theme === activeTheme ? 'active' : '', dotMovingClass]"
+            <div class="bg-[var(--toggleDotBackground)]" :class="[theme === activeTheme ? 'active' : '', dotMovingClass]"
                 :style="`transform:translateX(${slideAmount});`" />
         </div>
     </div>

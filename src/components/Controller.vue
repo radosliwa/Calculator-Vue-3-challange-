@@ -1,34 +1,34 @@
 <template>
-  <div id="controller" class="grid grid-cols-4 grid-rows-1 gap-6 p-5 mt-6 rounded-md">
-    <div
-      v-for="(el, index) in config"
-      :key="index"
-      tabindex="0"
-      role="button"
-      :class="[
-        `button button--${currentLayout} button-${el.name} `,
-        { active: setButtonState(el) },
-      ]"
-      @click="clickHandler(el)"
-    >
+  <div id="controller" class="grid grid-cols-4 grid-rows-1 gap-6 p-5 mt-6 rounded-md bg-[var(--keypadBackground)]">
+    <div v-for="(el, index) in config" :key="index" tabindex="0" role="button" :class="[
+      `button ${el.name} ${setButtonClasses(el.name)}`, { active: setButtonState(el) }]" @click="clickHandler(el)">
       {{ el.value }}
     </div>
-    <!-- <p>{{ currentValue?.value ?? null }}</p> -->
   </div>
 </template>
 
 <script setup lang="ts">
 import { ref, defineComponent } from "vue";
-// composables
 import { useLayout } from "@/composables/store";
-// types
 import { IButton } from "@/types";
-// helpers
 import { config } from "../buttonsConfig";
 
 const emit = defineEmits(["key-value"]);
 const { currentLayout } = useLayout();
 const currentValue = ref<null | IButton>(null);
+
+const setButtonClasses = (name) => {
+  switch (name) {
+    case "del":
+      return "bg-[var(--keyDelBcg)] text-[var(--keyDelColor)]";
+    case "reset":
+      return "bg-[var(--keyResetBcg)] text-[var(--keyResetColor)]";
+    case "equal":
+      return "bg-[var(--keyEqualBcg)] text-[var(--keyEqualColor)]";
+    default:
+      return "bg-[var(--keyMainBcg)] text-[var(--keyMainColor)]";
+  }
+};
 
 const clickHandler = (val: IButton) => {
   currentValue.value = val;
@@ -38,14 +38,9 @@ const clickHandler = (val: IButton) => {
     }, 300);
   }
   emit("key-value", currentValue);
-}
-;
+};
+
 const setButtonState = (btn: IButton): boolean =>
   currentValue?.value ? btn.value === currentValue.value.value : false;
-</script>
 
-<style lang="scss">
-#controller {
-  // border-radius: $mainRadius;
-}
-</style>
+</script>

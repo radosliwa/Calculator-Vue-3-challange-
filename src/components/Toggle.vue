@@ -13,14 +13,14 @@ import ToggleSlider from '@/components/ToggleSlider.vue';
 </script>
 
 <style lang="scss" scoped>
-.toggle{
+.toggle {
     display: flex;
     justify-content: flex-end;
     align-items: center;
     margin-bottom: 1rem;
-    .title{
+
+    .title {
         margin-right: 1rem;
     }
 }
-
 </style>

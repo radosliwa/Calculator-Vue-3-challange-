@@ -15,7 +15,8 @@ export const useLayout = () => {
         const currentLayout: TLayout = `layout${layout}`;
         state.value.currentLayout = currentLayout;
     };
-    const getCurrentVars = computed((): IVars => varsConfig[state.value.currentLayout]);
+
+    const getCurrentVars = computed<IVars>(() => varsConfig[state.value.currentLayout]);
 
     return {
         currentLayout: computed(() => state.value.currentLayout),

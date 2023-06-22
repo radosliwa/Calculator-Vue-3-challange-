@@ -1,13 +1,7 @@
 <template>
-    <div id="screen"
-         ref="screen"
-         class="flex min-h-[95px] w-full justify-end p-4 rounded-md"
-         :class="[{'justify-start overflow-x-hidden':isContentTooLong}]"
-    >
-        <span ref="content"
-              class="text-[42px] font-bold"
-              tabindex="0"
-        >
+    <div id="screen" ref="screen" class="flex min-h-[95px] w-full justify-end p-4 rounded-md bg-[var(--screenBackground)]"
+        :class="[{ 'justify-start overflow-x-hidden': isContentTooLong }]">
+        <span ref="content" class="text-[42px] font-bold" tabindex="0">
             {{ number }}
         </span>
     </div>

@@ -3,18 +3,31 @@
 @tailwind utilities;
 
 @layer base {
+	/* layout1: {
+
+        keyMainBcg: '#F0F0F0',
+        keyDelBcg: '#637097',
+        keyEqualBcg: '#d02f2f',
+        keyEqualShadow: '#93261A',
+        keyMainColor: '#000',
+        keyMainColor: '#FFF',
+        keyEqualColor: '#FFF',
+        textScreen: '#FFF',
+        textToggle: '#FFF',
+        toggleDot: '#FFF' 
+	 } */
 	:root {
 		--primary: 58, 71, 100;
 		--secondary: 24, 32, 52;
 		--tertiary: 240, 240, 240;
 		--quaternary: 99, 112, 151;
-		--neutral: 0, 0, 0;
+		--black: 0, 0, 0;
 		--positive: 208, 47, 47;
 	}
 	
 	body {
 		background-color: rgba(var(--primary), 1);
-		color: rgba(var(--neutral), 1);
+		/* color: rgba(var(--black), 1); */
 	}
 	
 	body.layout2 {
@@ -22,7 +35,7 @@
 		--secondary: 209, 204, 204;
 		--tertiary: 229, 228, 225;
 		--quaternary: 55, 127, 134;
-		--neutral: 0, 0, 0;
+		--black: 0, 0, 0;
 		--positive: 202, 85, 2;
 	}
 	
@@ -31,7 +44,28 @@
 		--secondary: 29, 9, 52;
 		--tertiary: 52, 28, 79;
 		--quaternary: 88, 7, 125;
-		--neutral: 255, 229, 61;
+		--black: 255, 229, 61;
 		--positive: 0, 224, 209;
 	}
+
+	body[class^="layout"] {
+		--mainBackground: rgba(var(--primary), 1);
+		--toggleBackground: rgba(var(--secondary), 1);
+		--toggleDotBackground: rgba(var(--positive), 1);
+		--keypadBackground: rgba(var(--secondary), 1);
+		--screenBackground: rgba(var(--secondary), 1);
+
+		--keyMainBcg: rgba(var(--tertiary), 1);
+		--keyDelBcg: rgba(var(--quaternary), 1);
+		--keyEqualBcg: rgba(var(--positive), 1);
+		--keyResetBcg: rgba(var(--quaternary), 1);
+		
+		--keyMainColor: rgba(var(--primary), 1);
+		--keyDelColor: rgba(var(--tertiary), 1);
+		--keyEqualColor: rgba(var(--tertiary), 1);
+		--keyResetColor: rgba(var(--tertiary), 1);
+		
+		--keyEqualShadow: rgba(var(--positive), 0.5);
+	}
+
 }

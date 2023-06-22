@@ -1,28 +1,21 @@
 /* eslint-disable no-unused-vars */
 <template>
     <Layout>
-        <div id="calculator"
-             class="relative flex h-auto max-h-[85vh]
-             w-auto max-w-[520px] flex-col justify-center rounded-md"
-        >
+        <div id="calculator" class="relative flex h-auto max-h-[85vh]
+             w-auto max-w-[520px] flex-col justify-center rounded-md">
             <Toggle />
             <Screen :number="currScreenValue" />
-            <Controller @key-value="inputInterceptor" />
+            <Controller @key-value="inputHandler" />
         </div>
     </Layout>
 </template>
 
 <script setup lang="ts">
 import { ref } from 'vue';
-// layout
 import Layout from '@/layouts/Layout.vue';
-
-// components
 import Controller from './components/Controller.vue';
 import Toggle from './components/Toggle.vue';
 import Screen from './components/Screen.vue';
-
-// types
 import { IButton, TValue } from './types';
 
 const allValuesArr = ref<TValue[]>([]);
@@ -31,33 +24,31 @@ const currScreenValue = ref<string | number>('');
 const operator = ref<null | TValue>(null);
 const wasOperatorSelected = ref<boolean>(!!operator.value);
 
-const inputInterceptor = (btnValue: IButton) => {
-    const input = ref<IButton>(btnValue);
-    inputHandler(input.value);
-};
 const inputHandler = (input: IButton) => {
+    console.log('input handler: ', input);
+
     const inputValue = input.altValue ?? input.value;
     const inputType = input.type;
     const inputName = input.name;
     switch (inputType) {
-    case 'operator':
-        operatorHandler(inputValue);
-        break;
-    case 'function':
-        functionHandler(inputName);
-        break;
-    case 'number':
-        if(wasOperatorSelected.value) {
-            accumulatedValue.value = eval(`${accumulatedValue.value} ${operator.value} ${Number(inputValue)}`);
-            currScreenValue.value = inputValue;
-            allValuesArr.value = [];
-            wasOperatorSelected.value = false;
+        case 'operator':
+            operatorHandler(inputValue);
             break;
-        }
-    default:
-        allValuesArr.value.push(inputValue);
-        currScreenValue.value = allValuesArr.value.join('');
-        accumulatedValue.value = currScreenValue.value;
+        case 'function':
+            functionHandler(inputName);
+            break;
+        case 'number':
+            if (wasOperatorSelected.value) {
+                accumulatedValue.value = eval(`${accumulatedValue.value} ${operator.value} ${Number(inputValue)}`);
+                currScreenValue.value = inputValue;
+                allValuesArr.value = [];
+                wasOperatorSelected.value = false;
+                break;
+            }
+        default:
+            allValuesArr.value.push(inputValue);
+            currScreenValue.value = allValuesArr.value.join('');
+            accumulatedValue.value = currScreenValue.value;
     }
 };
 
@@ -70,15 +61,15 @@ const operatorHandler = (currOperator: TValue) => {
 
 const functionHandler = (currFunction: string) => {
     switch (currFunction) {
-    case 'del':
-        allValuesArr.value.pop();
-        currScreenValue.value = allValuesArr.value.join('');
-        break;
-    case 'reset':
-        reset();
-        break;
-    default:
-        currScreenValue.value = null;
+        case 'del':
+            allValuesArr.value.pop();
+            currScreenValue.value = allValuesArr.value.join('');
+            break;
+        case 'reset':
+            reset();
+            break;
+        default:
+            currScreenValue.value = null;
     }
 };
 
@@ -92,5 +83,4 @@ function reset() {
 
 </script>
 
-<style lang="scss">
-</style>
+<style lang="scss"></style>
