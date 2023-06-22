@@ -8,12 +8,12 @@ describe('Controller.vue', () => {
 
     it('emits value when keypad buttons are clicked', async () => {
         await buttonToClick.trigger('click');
-        expect(wrapper.emitted()['key-value']).toBeTruthy();
+        expect(wrapper.emitted()['key-selected']).toBeTruthy();
     });
 
     it('emitted value equals current value', async () => {
         await buttonToClick.trigger('click');
-        const emittedValue = wrapper.emitted()['key-value'][0][0]._value.value;
+        const emittedValue = wrapper.emitted()['key-selected'][0][0]._value.value;
         const currentValue = wrapper.vm.currentValue.value;
         expect(currentValue).toEqual(emittedValue);
     });

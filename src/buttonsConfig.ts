@@ -92,7 +92,7 @@ export const config: IButton[] = [
         value: 'x',
         type: 'operator',
         name: 'times',
-        altValue: '*',
+        // altValue: '*',
 
     },
     {

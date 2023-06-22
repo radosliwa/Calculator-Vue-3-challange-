@@ -11,6 +11,6 @@ interface IButton {
     value: TValue;
     type: keyof typeof InputTypes,
     name: string,
-    altValue?: TValue
+    // altValue?: TValue
 }
 export { TValue, IButton, InputTypes };

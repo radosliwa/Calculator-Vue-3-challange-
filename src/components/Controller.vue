@@ -13,7 +13,7 @@ import { useLayout } from "@/composables/store";
 import { IButton } from "@/types";
 import { config } from "../buttonsConfig";
 
-const emit = defineEmits(["key-value"]);
+const emit = defineEmits(["key-selected"]);
 const { currentLayout } = useLayout();
 const currentValue = ref<null | IButton>(null);
 
@@ -31,13 +31,12 @@ const setButtonClasses = (name) => {
 };
 
 const clickHandler = (val: IButton) => {
-  currentValue.value = val;
   if (val.name === "reset") {
     setTimeout(() => {
       currentValue.value = null;
     }, 300);
   }
-  emit("key-value", currentValue);
+  emit("key-selected", val);
 };
 
 const setButtonState = (btn: IButton): boolean =>

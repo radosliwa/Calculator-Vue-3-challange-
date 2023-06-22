@@ -43,6 +43,6 @@ watch(currentLayout, () => {
 }
 
 .toggle-dot {
-    // background: v-bind('getCurrentVars.keyEqualBcg');
+    background: v-bind('getCurrentVars.keyEqualBcg');
 }
 </style>
