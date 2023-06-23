@@ -2,7 +2,7 @@
     <div
         id="screen"
         ref="screen"
-        class="flex min-h-[95px] w-full justify-end p-4 rounded-md bg-[var(--screenBackground)]"
+        class="flex min-h-[95px] w-full justify-end rounded-md bg-[var(--screenBackground)] p-4"
         :class="[{ 'justify-start overflow-x-hidden': isContentTooLong }]"
     >
         <span

@@ -1,5 +1,5 @@
 <template>
-    <div id="controller" class="grid grid-cols-4 grid-rows-1 gap-6 p-5 mt-6 rounded-md bg-[var(--keypadBackground)]">
+    <div id="controller" class="mt-6 grid grid-cols-4 grid-rows-1 gap-6 rounded-md bg-[var(--keypadBackground)] p-5">
         <div
             v-for="(el, index) in config" :key="index"
             tabindex="0" role="button"

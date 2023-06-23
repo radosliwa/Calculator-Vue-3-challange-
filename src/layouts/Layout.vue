@@ -1,5 +1,5 @@
 <template>
-    <div class="min-h-screen min-w-screen flex justify-center items-center bg-[var(--mainBackground)]">
+    <div class="min-w-screen flex min-h-screen items-center justify-center bg-[var(--mainBackground)]">
         <slot />
     </div>
 </template>
