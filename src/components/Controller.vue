@@ -1,10 +1,17 @@
 <template>
-  <div id="controller" class="grid grid-cols-4 grid-rows-1 gap-6 p-5 mt-6 rounded-md bg-[var(--keypadBackground)]">
-    <div v-for="(el, index) in config" :key="index" tabindex="0" role="button" :class="[
-      `button ${el.name} ${setButtonClasses(el.name)}`, { active: setButtonState(el) }]" @click="clickHandler(el)">
-      {{ el.value }}
+    <div id="controller" class="grid grid-cols-4 grid-rows-1 gap-6 p-5 mt-6 rounded-md bg-[var(--keypadBackground)]">
+        <div
+            v-for="(el, index) in config" :key="index"
+            tabindex="0" role="button"
+            :class="[
+                `button ${el.name} ${setButtonClasses(el.name)}`,
+                { active: setButtonState(el) }
+            ]" 
+            @click="clickHandler(el)"
+        >
+            {{ el.value }}
+        </div>
     </div>
-  </div>
 </template>
 
 <script setup lang="ts">

@@ -14,7 +14,7 @@ watch(currentLayout, () => {
     document.body.className = currentLayout.value;
 }, { immediate: true });
 
-</script>
+</script> 
 
 <style lang="scss">
 #screen {

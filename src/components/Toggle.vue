@@ -8,8 +8,7 @@
 </template>
 
 <script setup lang="ts">
-import ToggleSlider from '@/components/ToggleSlider.vue';
-
+import ToggleSlider from '@/components/ToggleSlider.vue'
 </script>
 
 <style lang="scss" scoped>

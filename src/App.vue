@@ -1,8 +1,9 @@
-/* eslint-disable no-unused-vars */
 <template>
     <Layout>
-        <div id="calculator" class="relative flex h-auto max-h-[85vh]
-             w-auto max-w-[520px] flex-col justify-center rounded-md">
+        <div
+            id="calculator" class="relative flex h-auto max-h-[85vh]
+             w-auto max-w-[520px] flex-col justify-center rounded-md"
+        >
             <Toggle />
             <Screen :number="currScreenValue" />
             <Controller @key-selected="selectionHandler" />
@@ -69,7 +70,7 @@ const functionHandler = (currFunction: string) => {
             reset();
             break;
         default:
-            currScreenValue = null;
+            currScreenValue.value = null;
     }
 };
 
