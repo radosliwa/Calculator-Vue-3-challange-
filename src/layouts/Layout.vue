@@ -14,7 +14,7 @@ watch(currentLayout, () => {
     document.body.className = currentLayout.value;
 }, { immediate: true });
 
-</script> 
+</script>
 
 <style lang="scss">
 #screen {
@@ -35,7 +35,7 @@ watch(currentLayout, () => {
 
 .button-equal {
     // background: v-bind('getCurrentVars.keyEqualBcg');
-    color: v-bind('getCurrentVars.keyEqualColor');
+    // color: v-bind('getCurrentVars.keyEqualColor');
 }
 
 .toggle {

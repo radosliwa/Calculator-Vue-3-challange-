@@ -1,52 +1,56 @@
 <template>
     <div id="controller" class="mt-6 grid grid-cols-4 grid-rows-1 gap-6 rounded-md bg-[var(--keypadBackground)] p-5">
-        <div
+        <button
             v-for="(el, index) in config" :key="index"
-            tabindex="0" role="button"
             :class="[
-                `button ${el.name} ${setButtonClasses(el.name)}`,
-                { active: setButtonState(el) }
+                `button ${el.name} button--${currentLayout}`,
+                `flex cursor-pointer justify-center px-6 py-4 text-[32px] font-extrabold
+                 ${setButtonClasses(el)}`,
             ]" 
             @click="clickHandler(el)"
         >
             {{ el.value }}
-        </div>
+        </button>
     </div>
 </template>
 
 <script setup lang="ts">
-import { ref, defineComponent } from "vue";
+import { ref } from "vue";
 import { useLayout } from "@/composables/store";
-import { IButton } from "@/types";
+import { IButton, TValue } from "@/types";
 import { config } from "../buttonsConfig";
 
-const emit = defineEmits(["key-selected"]);
+ const emit = defineEmits(["key-selected"]);
 const { currentLayout } = useLayout();
-const currentValue = ref<null | IButton>(null);
+const currentValue = ref<TValue>('');
 
-const setButtonClasses = (name) => {
+const setButtonClasses = ({value, name}: IButton) => {
+   let classes = "";
   switch (name) {
     case "del":
-      return "bg-[var(--keyDelBcg)] text-[var(--keyDelColor)]";
+      classes = "bg-[var(--keyDelBcg)] text-[var(--keyDelColor)]";
+      break
     case "reset":
-      return "bg-[var(--keyResetBcg)] text-[var(--keyResetColor)]";
+      classes = "bg-[var(--keyResetBcg)] text-[var(--keyResetColor)]";
+      break
     case "equal":
-      return "bg-[var(--keyEqualBcg)] text-[var(--keyEqualColor)]";
+      classes = "bg-[var(--keyEqualBcg)] text-[var(--keyEqualColor)]";
+      break
     default:
-      return "bg-[var(--keyMainBcg)] text-[var(--keyMainColor)]";
+      classes = "bg-[var(--keyMainBcg)] text-[var(--keyMainColor)]";
   }
+
+  return classes + ` ${currentValue.value === value ? "active" : ""}`;
 };
 
-const clickHandler = (val: IButton) => {
-  if (val.name === "reset") {
+const clickHandler = ({value, name}: IButton) => {
+  currentValue.value = value;
+  if (name === "reset") {
     setTimeout(() => {
-      currentValue.value = null;
+      currentValue.value = '';
     }, 300);
   }
-  emit("key-selected", val);
+  emit("key-selected", value);
 };
-
-const setButtonState = (btn: IButton): boolean =>
-  currentValue?.value ? btn.value === currentValue.value.value : false;
 
 </script>

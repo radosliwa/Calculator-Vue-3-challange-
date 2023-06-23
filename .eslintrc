@@ -1,38 +1,43 @@
-
 {
-    "root": true,
-    "parser": "vue-eslint-parser",
-    "parserOptions": {
-        "parser": "@typescript-eslint/parser",
-    },
-    "extends": [
-        "plugin:vue/strongly-recommended",
-        "eslint:recommended",
-        "@vue/typescript/recommended",
-        "plugin:tailwindcss/recommended"
-        // "prettier"
+  "root": true,
+  // "parser": "vue-eslint-parser",
+  "parserOptions": {
+    "parser": "@typescript-eslint/parser"
+  },
+  "extends": [
+    "eslint:recommended",
+    "plugin:vue/vue3-strongly-recommended",
+    "plugin:tailwindcss/recommended"
+  ],
+  "rules": {
+    "max-len": [
+      "error",
+      {
+        "code": 180
+      }
     ],
-    "plugins": ["@typescript-eslint"],
-    "rules": {
-        // "prettier/prettier": "error",
-        "max-len": ["error", { "code": 180 }],
-        // not needed for vue 3
-        // "vue/no-multiple-template-root": "off",
-        "vue/max-attributes-per-line": ["error", {
-            "singleline": {
-              "max": 2
-            },      
-            "multiline": {
-              "max": 2
-            }
-          }],
-          "vue/html-indent": ["error", 4, {
-            "attribute": 1,
-            "baseIndent": 1,
-            "closeBracket": 0,
-            "alignAttributesVertically": true,
-            "ignores": []
-          }],
-          "tailwindcss/no-custom-classname": "off",
-    }
+    "vue/max-attributes-per-line": [
+      "error",
+      {
+        "singleline": {
+          "max": 2
+        },
+        "multiline": {
+          "max": 2
+        }
+      }
+    ],
+    "vue/html-indent": [
+      "error",
+      4,
+      {
+        "attribute": 1,
+        "baseIndent": 1,
+        "closeBracket": 0,
+        "alignAttributesVertically": true,
+        "ignores": []
+      }
+    ],
+    "tailwindcss/no-custom-classname": "off",
+  }
 }

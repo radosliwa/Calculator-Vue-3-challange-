@@ -1,7 +1,5 @@
 /* TYPOGRAPHY */
 
-$mainSize: 32px;
-
 @mixin boxShadow($down:5px, $color:black) {
     box-shadow: 0px $down 0px $color;
 }

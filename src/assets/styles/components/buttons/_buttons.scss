@@ -1,25 +1,18 @@
-%button {
-    padding: 1rem 1.5rem;
-    display: flex;
-    justify-content: center;
-    cursor: pointer;
-}
-
 :root {
     // shadow config
-    --shadowConfig: 3px 3px 0px 0px;
-    --shadowConfigHover: 4px 5px 0px 0px;
-    --shadowConfigActive: 2px 2px 0px 0px;
+    // --shadowConfig: 3px 3px 0px 0px;
+    // --shadowConfigHover: 4px 5px 0px 0px;
+    // --shadowConfigActive: 2px 2px 0px 0px;
     /* colors */
     // l1
-    --boxShadowColor1: 64, 78, 114;
-    --boxShadowColorEqual1: hsl(6, 70%, 34%);
-    --boxShadowBtn: var(--shadowConfig) rgba(var(--boxShadowColor1), .9);
-    --boxShadowBtnHover: var(--shadowConfigHover) rgba(var(--boxShadowColor1), .9);
-    --boxShadowBtnActive: var(--shadowConfigActive) rgba(var(--boxShadowColor1), 1);
-    --boxShadowBtnEqual: var(--shadowConfig) var(--boxShadowColorEqual1);
-    --boxShadowBtnHover: var(--shadowConfigHover) rgba(var(--boxShadowColor1), .9);
-    --boxShadowBtnActive: var(--shadowConfigActive) rgba(var(--boxShadowColor1), 1);
+    // --boxShadowColor1: 64, 78, 114;
+    // --boxShadowColorEqual1: hsl(6, 70%, 34%);
+    // --boxShadowBtn: var(--shadowConfig) rgba(var(--boxShadowColor1), .9);
+    // --boxShadowBtnHover: var(--shadowConfigHover) rgba(var(--boxShadowColor1), .9);
+    // --boxShadowBtnActive: var(--shadowConfigActive) rgba(var(--boxShadowColor1), 1);
+    // --boxShadowBtnEqual: var(--shadowConfig) var(--boxShadowColorEqual1);
+    // --boxShadowBtnHover: var(--shadowConfigHover) rgba(var(--boxShadowColor1), .9);
+    // --boxShadowBtnActive: var(--shadowConfigActive) rgba(var(--boxShadowColor1), 1);
     // l2
     --boxShadowColor2: 64, 78, 114;
     --boxShadowColorEqual2: hsl(25, 99%, 27%);
@@ -37,29 +30,41 @@
 }
 
 .button {
-    @extend %button;
     &:nth-child(17),
     &:last-of-type {
         grid-column: span 2;
     }
-    font-weight: 800;
-    font-size: $mainSize;
-    transition: all .3s ease-out;
+    transition: all .2s ease-out;
     &--layout1 {
-        box-shadow: var(--boxShadowBtn);
+        box-shadow: var(--keyMainBoxShadow);
         &:hover:not(.active) {
-            box-shadow: var( --boxShadowBtnHover);
+            transform: scale(0.95);
+
+            box-shadow: var( --keyMainBoxShadowHover);
         }
         &.active {
             transform: scale(0.95);
             box-shadow: var(--boxShadowBtnActive);
         }
-        &.button-equal {
-            box-shadow: var(--boxShadowBtnEqual2);
+        &.equal {
+            box-shadow: var(--keyEqualBoxShadow);
             &:hover:not(.active) {
-                box-shadow: var(--shadowConfigHover) var(--boxShadowColorEqual1);
+                box-shadow: var(--keyEqualBoxShadowHover);
             }
         }
+        &.del {
+            box-shadow: var(--keyDelBoxShadow);
+            &:hover:not(.active) {
+                box-shadow: var(--keyDelBoxShadowHover);
+            }
+        }
+        &.reset {
+            box-shadow: var(--keyResetBoxShadow);
+            &:hover:not(.active) {
+                box-shadow: var(--keyResetBoxShadowHover);
+            }
+        }
+ 
     }
     &--layout2 {
         box-shadow: var(--boxShadowBtn2);

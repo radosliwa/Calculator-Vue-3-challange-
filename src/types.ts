@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 // type TText = 'number' | 'operator' | 'text' | 'function'
-const enum InputTypes {
+enum InputTypes {
     number = 'number',
     operator = 'operator',
     text = 'text',
@@ -11,6 +11,5 @@ interface IButton {
     value: TValue;
     type: keyof typeof InputTypes,
     name: string,
-    // altValue?: TValue
 }
 export { TValue, IButton, InputTypes };
