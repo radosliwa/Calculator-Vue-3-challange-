@@ -54,6 +54,6 @@ const clickHandler = ({ value, name }: IButton) => {
             currentValue.value = ''
         }, 300)
     }
-    emit('key-selected', value)
+    emit('key-selected', { value, name })
 }
 </script>
