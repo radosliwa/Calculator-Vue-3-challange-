@@ -5,10 +5,7 @@
         class="flex min-h-[95px] w-full justify-end rounded-md bg-[var(--screenBackground)] p-4"
         :class="[{ 'justify-start overflow-x-hidden': isContentTooLong }]"
     >
-        <span
-            ref="content" class="text-[42px] font-bold"
-            tabindex="0"
-        >
+        <span ref="content" class="text-[42px] font-bold" tabindex="0">
             {{ number }}
         </span>
     </div>

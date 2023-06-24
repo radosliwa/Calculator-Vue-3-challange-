@@ -1,8 +1,12 @@
 <template>
-    <div class="toggle-slider flex rounded-[20px] p-[4px] w-[75px] h-[25px] relative bg-[var(--toggleBackground)]">
+    <div
+        class="toggle-slider relative flex h-[25px] w-[75px] rounded-[20px] bg-[var(--toggleBackground)] p-[4px]"
+    >
         <div
-            v-for="(theme, index) in [1, 2, 3]" :key="theme + index"
-            class="flex justify-center items-center cursor-pointer w-[25px]" @click="changeTheme(theme)"
+            v-for="(theme, index) in [1, 2, 3]"
+            :key="theme + index"
+            class="flex w-[25px] cursor-pointer items-center justify-center"
+            @click="changeTheme(theme)"
         >
             <span class="theme-number">{{ theme }}</span>
             <!-- .toggle-dot {
@@ -28,8 +32,11 @@
 I need to rewrite this scss into tailwindcss below
 -->
             <div
-                class="toggle-dot bg-[var(--toggleDotBackground)] h-[15px] w-[15px] absolute rounded-[50%]"
-                :class="[theme === activeTheme ? 'active visible' : 'invisible', dotMovingClass]"
+                class="toggle-dot absolute h-[15px] w-[15px] rounded-[50%] bg-[var(--toggleDotBackground)]"
+                :class="[
+                    theme === activeTheme ? 'active visible' : 'invisible',
+                    dotMovingClass
+                ]"
                 :style="`transform:translateX(${slideAmount});`"
             />
         </div>
@@ -48,7 +55,9 @@ const slideAmount = ref('')
 const changeTheme = (theme: number) => {
     const isMovingRight = theme > activeTheme.value
     dotMovingClass.value = isMovingRight ? 'right' : 'left'
-    slideAmount.value = isMovingRight ? `${25 * (theme - activeTheme.value)}px` : `-${25 * (activeTheme.value - theme)}px`
+    slideAmount.value = isMovingRight
+        ? `${25 * (theme - activeTheme.value)}px`
+        : `-${25 * (activeTheme.value - theme)}px`
     setTimeout(() => {
         activeTheme.value = theme
         dotMovingClass.value = ''

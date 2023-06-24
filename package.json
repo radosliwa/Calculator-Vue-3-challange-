@@ -5,10 +5,7 @@
     "scripts": {
         "dev": "vite",
         "build": "vue-tsc --noEmit && vite build",
-        "lint": "vue-cli-service lint",
-        "test:unit": "jest",
-        "jest:watch": "vue-cli-service test:unit --watch",
-        "clear_jest": "jest --clearCache"
+        "lint": "eslint --ext .js,.ts,.vue --ignore-path .gitignore ."
     },
     "dependencies": {
         "core-js": "^3.18.1",
@@ -16,20 +13,22 @@
     },
     "devDependencies": {
         "@types/node": "^18.0.3",
-        "@typescript-eslint/eslint-plugin": "^5.60.0",
         "@typescript-eslint/parser": "^5.60.0",
         "@vitejs/plugin-vue": "^4.2.3",
         "@vue/test-utils": "^2.0.0-rc.15",
         "autoprefixer": "^10.4.7",
-        "eslint": "^8.43.0",
+        "eslint": "^8.0.0",
+        "eslint-config-prettier": "^8.8.0",
         "eslint-plugin-tailwindcss": "^3.12.1",
-        "eslint-plugin-vue": "^9.15.0",
+        "eslint-plugin-vue": "^9.0.0",
         "jest-serializer-vue": "^2.0.2",
         "postcss": "^8.4.14",
+        "prettier": "2.8.8",
         "sass": "^1.53.0",
         "sass-loader": "^7.3.1",
         "tailwindcss": "^3.1.5",
         "ts-jest": "^26.5.6",
+        "turbo": "^1.9.3",
         "typescript": "^4.1.5",
         "vite": "^4.0.0",
         "vue-eslint-parser": "^9.3.1",

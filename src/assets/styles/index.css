@@ -3,93 +3,143 @@
 @tailwind utilities;
 
 @layer base {
-	/* layout1: {
+    :root {
+        --shadowConfig: 0px 3px 0px 0px;
+        --shadowConfigHover: 1px 4px 10px 0px;
+        --shadowConfigActive: 0px 0px 0px 0px;
 
-        keyMainBcg: '#F0F0F0',
-        keyDelBcg: '#637097',
-        keyEqualBcg: '#d02f2f',
-        keyEqualShadow: '#93261A',
-        keyMainColor: '#000',
-        keyMainColor: '#FFF',
-        keyEqualColor: '#FFF',
-        textScreen: '#FFF',
-        textToggle: '#FFF',
-        toggleDot: '#FFF' 
-	 } */
-	:root {
-		--shadowConfig: 3px 3px 0px 0px;
-    	--shadowConfigHover: 3px 3px 0px 0px;
-    	--shadowConfigActive: 0px 0px 0px 0px;
-		
-		--primary: 58, 71, 100;
-		--secondary: 24, 32, 52;
-		--tertiary: 240, 240, 240;
-		--quaternary: 99, 112, 151;
-		--black: 0, 0, 0;
-		--positive: 208, 47, 47;
-	}
-	
-	body {
-		background-color: rgba(var(--primary), 1);
-		
-		/* ==== SHADOWS ==== */
-		/* main  */
-		--keyMainBoxShadowColor: rgba(var(--tertiary), .4);
-		--keyMainBoxShadow: var(--shadowConfig) var(--keyMainBoxShadowColor);
-		--keyMainBoxShadowHover: var(--shadowConfigHover) var(--keyMainBoxShadowColor);
-		
-		/* equal  */
-		--keyEqualBoxShadowColor: rgba(var(--positive), .4);
-		--keyEqualBoxShadow: var(--shadowConfig) var(--keyEqualBoxShadowColor);
-		--keyEqualBoxShadowHover: var(--shadowConfigHover) var(--keyEqualBoxShadowColor);
-		
-		/* delete  */
-		--keyDelBoxShadowColor: rgba(var(--quaternary), .4);
-		--keyDelBoxShadow: var(--shadowConfig) var(--keyDelBoxShadowColor);
-		--keyDelBoxShadowHover: var(--shadowConfigHover) var(--keyDelBoxShadowColor);
-		
-		/* reset  */
-		--keyResetBoxShadowColor: rgba(var(--quaternary), .4);
-		--keyResetBoxShadow: var(--shadowConfig) var(--keyResetBoxShadowColor);
-		--keyResetBoxShadowHover: var(--shadowConfigHover) var(--keyResetBoxShadowColor);
+        --primary: 58, 71, 100;
+        --secondary: 24, 32, 52;
+        --tertiary: 240, 240, 240;
+        --quaternary: 99, 112, 151;
+        --black: 0, 0, 0;
+        --positive: 208, 47, 47;
+        --white: 255, 255, 255;
+    }
 
-	}
-	
-	body.layout2 {
-		--primary: 230, 230, 230;
-		--secondary: 209, 204, 204;
-		--tertiary: 229, 228, 225;
-		--quaternary: 55, 127, 134;
-		--black: 0, 0, 0;
-		--positive: 202, 85, 2;
-	}
-	
-	body.layout3 {
-		--primary: 22, 6, 40;
-		--secondary: 29, 9, 52;
-		--tertiary: 52, 28, 79;
-		--quaternary: 88, 7, 125;
-		--black: 255, 229, 61;
-		--positive: 0, 224, 209;
-	}
+    body {
+        background-color: rgba(var(--primary), 1);
 
-	body[class^="layout"] {
-		--mainBackground: rgba(var(--primary), 1);
-		--toggleBackground: rgba(var(--secondary), 1);
-		--toggleDotBackground: rgba(var(--positive), 1);
-		--keypadBackground: rgba(var(--secondary), 1);
-		--screenBackground: rgba(var(--secondary), 1);
+        /* ==== SHADOWS ==== */
+        /* main  */
+        --keyMainBoxShadowColor: rgba(var(--tertiary), 0.4);
+        --keyMainBoxShadow: var(--shadowConfig) var(--keyMainBoxShadowColor);
+        --keyMainBoxShadowHover: var(--shadowConfigHover)
+            var(--keyMainBoxShadowColor);
 
-		--keyMainBcg: rgba(var(--tertiary), 1);
-		--keyDelBcg: rgba(var(--quaternary), 1);
-		--keyEqualBcg: rgba(var(--positive), 1);
-		--keyResetBcg: rgba(var(--quaternary), 1);
-		
-		--keyMainColor: rgba(var(--primary), 1);
-		--keyDelColor: rgba(var(--tertiary), 1);
-		--keyEqualColor: rgba(var(--tertiary), 1);
-		--keyResetColor: rgba(var(--tertiary), 1);
-		
-	}
+        /* equal  */
+        --keyEqualBoxShadowColor: rgba(var(--positive), 0.4);
+        --keyEqualBoxShadow: var(--shadowConfig) var(--keyEqualBoxShadowColor);
+        --keyEqualBoxShadowHover: var(--shadowConfigHover)
+            var(--keyEqualBoxShadowColor);
 
+        /* delete  */
+        --keyDelBoxShadowColor: rgba(var(--quaternary), 0.4);
+        --keyDelBoxShadow: var(--shadowConfig) var(--keyDelBoxShadowColor);
+        --keyDelBoxShadowHover: var(--shadowConfigHover)
+            var(--keyDelBoxShadowColor);
+
+        /* reset  */
+        --keyResetBoxShadowColor: rgba(var(--quaternary), 0.4);
+        --keyResetBoxShadow: var(--shadowConfig) var(--keyResetBoxShadowColor);
+        --keyResetBoxShadowHover: var(--shadowConfigHover)
+            var(--keyResetBoxShadowColor);
+    }
+
+    body.layout2 {
+        --primary: 230, 230, 230;
+        --secondary: 209, 204, 204;
+        --tertiary: 229, 228, 225;
+        --quaternary: 55, 127, 134;
+        --black: 0, 0, 0;
+        --positive: 202, 85, 2;
+    }
+
+    body.layout3 {
+        --primary: 255, 229, 61;
+        --secondary: 29, 9, 52;
+        --tertiary: 52, 28, 79;
+        --quaternary: 88, 7, 125;
+        --quinary: 22, 6, 40;
+        --black: 255, 229, 61;
+        --positive: 0, 224, 209;
+    }
+
+    body[class^='layout'] {
+        --mainBackground: rgba(var(--primary), 1);
+        --toggleBackground: rgba(var(--secondary), 1);
+        --toggleDotBackground: rgba(var(--positive), 1);
+        --keypadBackground: rgba(var(--secondary), 1);
+        --screenBackground: rgba(var(--secondary), 1);
+
+        --keyMainBcg: rgba(var(--tertiary), 1);
+        --keyDelBcg: rgba(var(--quaternary), 1);
+        --keyEqualBcg: rgba(var(--positive), 1);
+        --keyResetBcg: rgba(var(--quaternary), 1);
+
+        --keyMainColor: rgba(var(--primary), 1);
+        --keyDelColor: rgba(var(--tertiary), 1);
+        --keyResetColor: rgba(var(--tertiary), 1);
+        --keyEqualColor: rgba(var(--tertiary), 1);
+    }
+
+    body.layout2 {
+        --keyMainColor: rgba(var(--black), 1);
+
+        /* ==== SHADOWS ==== */
+        /* main  */
+        --keyMainBoxShadowColor: rgba(var(--black), 0.3);
+        --keyMainBoxShadow: var(--shadowConfig) var(--keyMainBoxShadowColor);
+        --keyMainBoxShadowHover: var(--shadowConfigHover)
+            var(--keyMainBoxShadowColor);
+
+        /* equal  */
+        --keyEqualBoxShadowColor: rgba(var(--positive), 0.7);
+        --keyEqualBoxShadow: var(--shadowConfig) var(--keyEqualBoxShadowColor);
+        --keyEqualBoxShadowHover: var(--shadowConfigHover)
+            var(--keyEqualBoxShadowColor);
+
+        /* delete  */
+        --keyDelBoxShadowColor: rgba(var(--quaternary), 0.5);
+        --keyDelBoxShadow: var(--shadowConfig) var(--keyDelBoxShadowColor);
+        --keyDelBoxShadowHover: var(--shadowConfigHover)
+            var(--keyDelBoxShadowColor);
+
+        /* reset  */
+        --keyResetBoxShadowColor: rgba(var(--quaternary), 0.5);
+        --keyResetBoxShadow: var(--shadowConfig) var(--keyResetBoxShadowColor);
+        --keyResetBoxShadowHover: var(--shadowConfigHover)
+            var(--keyResetBoxShadowColor);
+    }
+
+    body.layout3 {
+        --keyMainColor: rgba(var(--primary), 1);
+        --mainBackground: rgba(var(--quinary), 1);
+        --keyDelColor: rgba(var(--white), 1);
+        --keyResetColor: rgba(var(--white), 1);
+        /* ==== SHADOWS ==== */
+        /* main  */
+        --keyMainBoxShadowColor: rgba(var(--quaternary), 0.7);
+        --keyMainBoxShadow: var(--shadowConfig) var(--keyMainBoxShadowColor);
+        --keyMainBoxShadowHover: var(--shadowConfigHover)
+            var(--keyMainBoxShadowColor);
+
+        /* equal  */
+        --keyEqualBoxShadowColor: rgba(var(--positive), 0.5);
+        --keyEqualBoxShadow: var(--shadowConfig) var(--keyEqualBoxShadowColor);
+        --keyEqualBoxShadowHover: var(--shadowConfigHover)
+            var(--keyEqualBoxShadowColor);
+
+        /* delete  */
+        --keyDelBoxShadowColor: rgba(var(--quaternary), 0.3);
+        --keyDelBoxShadow: var(--shadowConfig) var(--keyDelBoxShadowColor);
+        --keyDelBoxShadowHover: var(--shadowConfigHover)
+            var(--keyDelBoxShadowColor);
+
+        /* reset  */
+        --keyResetBoxShadowColor: rgba(var(--quaternary), 0.3);
+        --keyResetBoxShadow: var(--shadowConfig) var(--keyResetBoxShadowColor);
+        --keyResetBoxShadowHover: var(--shadowConfigHover)
+            var(--keyResetBoxShadowColor);
+    }
 }

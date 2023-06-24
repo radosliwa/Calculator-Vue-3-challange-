@@ -1,8 +1,6 @@
 <template>
     <div class="toggle">
-        <h3 class="title">
-            Theme
-        </h3>
+        <h3 class="title">Theme</h3>
         <ToggleSlider />
     </div>
 </template>
