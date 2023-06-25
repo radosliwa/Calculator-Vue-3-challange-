@@ -1,15 +1,14 @@
 /* eslint-disable no-unused-vars */
-// type TText = 'number' | 'operator' | 'text' | 'function'
 enum InputTypes {
     number = 'number',
     operator = 'operator',
-    text = 'text',
-    function = 'function',
+    point = 'point',
+    function = 'function'
 }
 type TValue = number | string
 interface IButton {
-    value: TValue;
-    type: keyof typeof InputTypes,
-    name: string,
+    value: TValue
+    type: keyof typeof InputTypes
+    name: string
 }
-export { TValue, IButton, InputTypes };
+export { TValue, IButton, InputTypes }

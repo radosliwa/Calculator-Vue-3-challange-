@@ -1,110 +1,95 @@
-import { IButton } from './types';
+import { IButton } from './types'
 
 export const config: IButton[] = [
     {
         value: 7,
         type: 'number',
-        name: 'number',
+        name: 'number'
     },
     {
         value: 8,
         type: 'number',
-        name: 'number',
+        name: 'number'
     },
     {
         value: 9,
         type: 'number',
-        name: 'number',
-
+        name: 'number'
     },
     {
         value: 'DEL',
         type: 'function',
-        name: 'del',
-
+        name: 'del'
     },
     {
         value: 4,
         type: 'number',
-        name: 'number',
-
+        name: 'number'
     },
     {
         value: 5,
         type: 'number',
-        name: 'number',
-
+        name: 'number'
     },
     {
         value: 6,
         type: 'number',
-        name: 'number',
-
+        name: 'number'
     },
     {
         value: '+',
         type: 'operator',
-        name: 'plus',
-
+        name: 'plus'
     },
     {
         value: 1,
         type: 'number',
-        name: 'number',
-
+        name: 'number'
     },
     {
         value: 2,
         type: 'number',
-        name: 'number',
-
+        name: 'number'
     },
     {
         value: 3,
         type: 'number',
-        name: 'number',
+        name: 'number'
     },
     {
         value: '-',
         type: 'operator',
-        name: 'minus',
-
+        name: 'minus'
     },
     {
         value: '.',
-        type: 'text',
-        name: 'dot',
-
+        type: 'point',
+        name: 'point'
     },
     {
         value: 0,
         type: 'number',
-        name: 'number',
-
+        name: 'number'
     },
     {
         value: '/',
         type: 'operator',
-        name: 'division',
-
+        name: 'division'
     },
     {
         value: '*',
         type: 'operator',
-        name: 'times',
+        name: 'times'
         // altValue: '*',
-
     },
     {
         value: 'RESET',
         type: 'function',
-        name: 'reset',
-
+        name: 'reset'
     },
     {
         value: '=',
         type: 'operator',
-        name: 'equal',
-
-    },
-];
+        name: 'equal'
+    }
+]

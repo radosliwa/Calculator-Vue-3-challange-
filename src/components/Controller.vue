@@ -29,31 +29,26 @@ const { currentLayout } = useLayout()
 const currentValue = ref<TValue>('')
 
 const setButtonClasses = ({ value, name }: IButton) => {
-    let classes = ''
+    const state = ` ${currentValue.value === value ? 'active' : ''}`
     switch (name) {
         case 'del':
-            classes = 'bg-[var(--keyDelBcg)] text-[var(--keyDelColor)]'
-            break
+            return 'bg-[var(--keyDelBcg)] text-[var(--keyDelColor)]' + state
         case 'reset':
-            classes = 'bg-[var(--keyResetBcg)] text-[var(--keyResetColor)]'
-            break
+            return 'bg-[var(--keyResetBcg)] text-[var(--keyResetColor)]' + state
         case 'equal':
-            classes = 'bg-[var(--keyEqualBcg)] text-[var(--keyEqualColor)]'
-            break
+            return 'bg-[var(--keyEqualBcg)] text-[var(--keyEqualColor)]' + state
         default:
-            classes = 'bg-[var(--keyMainBcg)] text-[var(--keyMainColor)]'
+            return 'bg-[var(--keyMainBcg)] text-[var(--keyMainColor)]' + state
     }
-
-    return classes + ` ${currentValue.value === value ? 'active' : ''}`
 }
 
-const clickHandler = ({ value, name }: IButton) => {
+const clickHandler = ({ value, name, type }: IButton) => {
     currentValue.value = value
     if (name === 'reset') {
         setTimeout(() => {
             currentValue.value = ''
         }, 300)
     }
-    emit('key-selected', { value, name })
+    emit('key-selected', { value, name, type })
 }
 </script>
