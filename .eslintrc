@@ -4,18 +4,13 @@
     "parserOptions": {
         "parser": "@typescript-eslint/parser"
     },
-    "extends": [
-        "eslint:recommended",
-        "plugin:vue/vue3-recommended",
-        "prettier",
-        "plugin:tailwindcss/recommended"
-    ],
+    "extends": ["eslint:recommended", "plugin:vue/vue3-recommended", "prettier", "plugin:tailwindcss/recommended"],
 
     "rules": {
         "max-len": [
             "error",
             {
-                "code": 160
+                "code": 180
             }
         ],
         "vue/max-attributes-per-line": "off",
@@ -30,6 +25,8 @@
                 "ignores": []
             }
         ],
-        "tailwindcss/no-custom-classname": "off"
+        "tailwindcss/no-custom-classname": "off",
+        "no-unused-vars": "off",
+        "@typescript-eslint/no-unused-vars": ["error"]
     }
 }

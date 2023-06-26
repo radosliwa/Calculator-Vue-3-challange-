@@ -17,7 +17,7 @@ export const config: IButton[] = [
         name: 'number'
     },
     {
-        value: 'DEL',
+        value: 'del',
         type: 'function',
         name: 'del'
     },
@@ -80,10 +80,9 @@ export const config: IButton[] = [
         value: '*',
         type: 'operator',
         name: 'times'
-        // altValue: '*',
     },
     {
-        value: 'RESET',
+        value: 'reset',
         type: 'function',
         name: 'reset'
     },

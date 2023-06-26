@@ -5,10 +5,11 @@ enum InputTypes {
     point = 'point',
     function = 'function'
 }
-type TValue = number | string
+type TValue = number | keyof typeof InputTypes
+type TButtonValue = 'del' | '+' | '-' | '*' | '/' | '.' | '=' | 'reset' | number
 interface IButton {
-    value: TValue
+    value: TButtonValue
     type: keyof typeof InputTypes
     name: string
 }
-export { TValue, IButton, InputTypes }
+export { TValue, IButton, InputTypes, TButtonValue }

@@ -1,8 +1,5 @@
 <template>
-    <div
-        id="controller"
-        class="mt-6 grid grid-cols-4 grid-rows-1 gap-6 rounded-md bg-[var(--keypadBackground)] p-5"
-    >
+    <div id="controller" class="mt-6 grid grid-cols-4 grid-rows-1 gap-6 rounded-md bg-[var(--keypadBackground)] p-5">
         <button
             v-for="(el, index) in config"
             :key="index"
@@ -21,12 +18,12 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import { useLayout } from '@/composables/store'
-import { IButton, TValue } from '@/types'
+import { IButton, TValue, TButtonValue } from '@/types'
 import { config } from '../buttonsConfig'
 
 const emit = defineEmits(['key-selected'])
 const { currentLayout } = useLayout()
-const currentValue = ref<TValue>('')
+const currentValue = ref<TButtonValue | ''>('')
 
 const setButtonClasses = ({ value, name }: IButton) => {
     const state = ` ${currentValue.value === value ? 'active' : ''}`
