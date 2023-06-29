@@ -6,10 +6,17 @@ enum InputTypes {
     function = 'function'
 }
 type TValue = number | keyof typeof InputTypes
-type TButtonValue = 'del' | '+' | '-' | '*' | '/' | '.' | '=' | 'reset' | number
+
+type TOperator = '+' | '-' | '*' | '/' | '=' | 'reset' | 'del'
+
+type TButtonValue = TOperator | number | '.' | '0.'
 interface IButton {
     value: TButtonValue
     type: keyof typeof InputTypes
     name: string
 }
-export { TValue, IButton, InputTypes, TButtonValue }
+
+const isOperator = (value: TButtonValue): value is TOperator => {
+    return ['+', '-', '*', '/', '=', 'reset', 'del'].includes(value as TOperator)
+}
+export { TValue, IButton, InputTypes, TButtonValue, isOperator }
