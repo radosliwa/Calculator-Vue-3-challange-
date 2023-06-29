@@ -18,14 +18,17 @@ import Layout from '@/layouts/Layout.vue'
 import Controller from './components/Controller.vue'
 import Toggle from './components/Toggle.vue'
 import Screen from './components/Screen.vue'
-import { IButton, TValue, TButtonValue, isOperator } from './types'
+import { IButton, TValue, TButtonValue, isOperator, Functions } from './types'
 
 const currScreenValue = ref<string | number>(0)
 const operator = ref<null | TButtonValue>()
 const allValuesArr = ref<Array<TButtonValue>>([])
+
 let accumulatedValue = ref<number>(0)
 
-const selectionHandler = (button: IButton) => {
+const evaluateExpression = (expression: string): number => Math.round(eval(expression) * 1e10) / 1e10
+
+const selectionHandler = (button: IButton): void => {
     const { value, type, name } = button
     switch (type) {
         case 'operator':
@@ -42,19 +45,15 @@ const selectionHandler = (button: IButton) => {
     }
 }
 
+const evaluateAllAndUpdateValues = (valueToShowOnScreen: number | string): void => {
+    accumulatedValue.value = evaluateExpression(allValuesArr.value.join(''))
+    currScreenValue.value = valueToShowOnScreen
+}
+
 const pointHandler = () => {
     if (currScreenValue.value.toString().includes('.')) return
-    if (allValuesArr.value.length === 0) {
-        allValuesArr.value.push('0.')
-        currScreenValue.value = '0.'
-        return
-    }
-    const lastValue = allValuesArr.value[allValuesArr.value.length - 1]
-    if (typeof lastValue === 'number') {
-        allValuesArr.value[allValuesArr.value.length - 1] = (lastValue + '.') as TButtonValue
-        currScreenValue.value = currScreenValue.value + '.'
-        return
-    }
+    allValuesArr.value.push(allValuesArr.value.length === 0 ? '0.' : '.')
+    currScreenValue.value += '.'
 }
 
 const numberHandler = (clickedValue: TButtonValue) => {
@@ -64,7 +63,6 @@ const numberHandler = (clickedValue: TButtonValue) => {
     let valueToStore = clickedValue
 
     if (isAfterPoint) {
-        console.log(`🟢 is after point`)
         valueToStore = Number(currScreenValue.value.toString() + clickedValue)
         allValuesArr.value[allValuesArr.value.length - 1] = valueToStore
         currScreenValue.value = valueToStore
@@ -74,14 +72,13 @@ const numberHandler = (clickedValue: TButtonValue) => {
     allValuesArr.value.push(clickedValue)
 
     if (operator.value) {
-        accumulatedValue.value = Math.round(eval(allValuesArr.value.join('')) * 1e10) / 1e10
-        currScreenValue.value = clickedValue
+        evaluateAllAndUpdateValues(clickedValue)
         return
     }
     currScreenValue.value = allValuesArr.value.join('')
 }
 
-const operatorHandler = (currOperator: TButtonValue) => {
+const operatorHandler = (currOperator: TButtonValue): void => {
     const lastValue = allValuesArr.value[allValuesArr.value.length - 1]
     const isLastValueOperator = isOperator(lastValue)
     if (isLastValueOperator) {
@@ -90,20 +87,18 @@ const operatorHandler = (currOperator: TButtonValue) => {
         return
     }
 
-    if (operator.value) {
-        accumulatedValue.value = Math.round(eval(allValuesArr.value.join('')) * 1e10) / 1e10
-        currScreenValue.value = accumulatedValue.value
-    }
+    if (operator.value) evaluateAllAndUpdateValues(accumulatedValue.value)
+
     allValuesArr.value.push(currOperator)
     operator.value = currOperator
 }
 
-const functionHandler = (currFunction: string) => {
+const functionHandler = (currFunction: string): void => {
     switch (currFunction) {
-        case 'del':
+        case Functions.DELETE:
             currScreenValue.value = allValuesArr.value.join('')
             break
-        case 'reset':
+        case Functions.RESET:
             reset()
             break
         default:

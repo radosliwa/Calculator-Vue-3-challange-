@@ -28,7 +28,7 @@ const currentValue = ref<TButtonValue | ''>('')
 const setButtonClasses = ({ value, name }: IButton) => {
     const state = ` ${currentValue.value === value ? 'active' : ''}`
     switch (name) {
-        case 'del':
+        case 'delete':
             return 'bg-[var(--keyDelBcg)] text-[var(--keyDelColor)]' + state
         case 'reset':
             return 'bg-[var(--keyResetBcg)] text-[var(--keyResetColor)]' + state
