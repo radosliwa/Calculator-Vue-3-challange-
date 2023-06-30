@@ -1,9 +1,9 @@
 /* eslint-disable no-unused-vars */
 enum InputTypes {
-    number = 'number',
-    operator = 'operator',
-    point = 'point',
-    function = 'function'
+    NUMBER = 'number',
+    OPERATOR = 'operator',
+    POINT = 'point',
+    FUNCTION = 'function'
 }
 
 enum Functions {
@@ -18,10 +18,11 @@ type TOperator = '+' | '-' | '*' | '/' | '=' | 'reset' | 'del'
 type TButtonValue = TOperator | number | '.' | '0.'
 interface IButton {
     value: TButtonValue
-    type: keyof typeof InputTypes
+    type: InputTypes
     name: string
 }
 
-const isOperator = (value: TButtonValue): value is TOperator => ['+', '-', '*', '/', '=', 'reset', 'del'].includes(value as TOperator)
+const isOperator = (value: TButtonValue): value is TOperator =>
+    ['+', '-', '*', '/', '=', 'reset', 'del'].includes(value as TOperator)
 
 export { TValue, IButton, InputTypes, TButtonValue, isOperator, Functions }

@@ -10,7 +10,7 @@
         "max-len": [
             "error",
             {
-                "code": 180
+                "code": 120
             }
         ],
         "vue/max-attributes-per-line": "off",
