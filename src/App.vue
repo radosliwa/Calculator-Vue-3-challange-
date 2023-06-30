@@ -3,11 +3,11 @@
         <div id="calculator" class="relative flex h-auto max-h-[85vh] w-auto max-w-[520px] flex-col justify-center rounded-md">
             <Toggle />
             <Screen :number="currScreenValue" />
-            <Controller @key-selected="selectionHandler" />
-            <h2>OPERATOR {{ operator }}</h2>
-            <h2>ALL VALUES ARR {{ allValuesArr }}</h2>
-            <h2>ACCUMULATED VALUE {{ accumulatedValue }}</h2>
-            <h2>CURR SCREEN VALUE {{ currScreenValue }}</h2>
+            <Controller :config="config" :current-layout="currentLayout" @key-selected="selectionHandler" />
+            <h2 class="text-white">OPERATOR {{ operator }}</h2>
+            <h2 class="text-white">ALL VALUES ARR {{ allValuesArr }}</h2>
+            <h2 class="text-white">ACCUMULATED VALUE {{ accumulatedValue }}</h2>
+            <h2 class="text-white">CURR SCREEN VALUE {{ currScreenValue }}</h2>
         </div>
     </Layout>
 </template>
@@ -15,10 +15,14 @@
 <script setup lang="ts">
 import { ref, unref, watch, toRaw, markRaw } from 'vue'
 import Layout from '@/layouts/Layout.vue'
-import Controller from './components/Controller.vue'
-import Toggle from './components/Toggle.vue'
-import Screen from './components/Screen.vue'
+import Controller from '@/components/Controller.vue'
+import Toggle from '@/components/Toggle.vue'
+import Screen from '@/components/Screen.vue'
 import { IButton, TValue, TButtonValue, isOperator, Functions } from './types'
+import { config } from '@/buttonsConfig'
+import { useLayout } from '@/composables/store'
+
+const { currentLayout } = useLayout()
 
 const currScreenValue = ref<string | number>(0)
 const operator = ref<null | TButtonValue>()
@@ -63,9 +67,13 @@ const numberHandler = (clickedValue: TButtonValue) => {
     let valueToStore = clickedValue
 
     if (isAfterPoint) {
+        console.log(`🟢 IS AFTER POINT`)
         valueToStore = Number(currScreenValue.value.toString() + clickedValue)
-        allValuesArr.value[allValuesArr.value.length - 1] = valueToStore
+        console.log(`🟢 VALUE TO STORE`, valueToStore)
+        // allValuesArr.value[allValuesArr.value.length - 1] = valueToStore
         currScreenValue.value = valueToStore
+        allValuesArr.value.push(clickedValue)
+
         return
     }
 
@@ -80,7 +88,18 @@ const numberHandler = (clickedValue: TButtonValue) => {
 
 const operatorHandler = (currOperator: TButtonValue): void => {
     const lastValue = allValuesArr.value[allValuesArr.value.length - 1]
+    if (currOperator === lastValue) return
+
     const isLastValueOperator = isOperator(lastValue)
+
+    if (currOperator === '=') {
+        evaluateAllAndUpdateValues(accumulatedValue.value)
+        operator.value = null
+        allValuesArr.value = [accumulatedValue.value]
+        accumulatedValue.value = 0
+        return
+    }
+
     if (isLastValueOperator) {
         allValuesArr.value[allValuesArr.value.length - 1] = currOperator
         operator.value = currOperator
@@ -97,6 +116,9 @@ const functionHandler = (currFunction: string): void => {
     switch (currFunction) {
         case Functions.DELETE:
             currScreenValue.value = allValuesArr.value.join('')
+            // find last element of allValuesArr
+
+            // if it has '.' remove last numeric value and replace it
             break
         case Functions.RESET:
             reset()
@@ -106,7 +128,7 @@ const functionHandler = (currFunction: string): void => {
     }
 }
 
-function reset() {
+const reset = () => {
     accumulatedValue.value = 0
     currScreenValue.value = 0
     allValuesArr.value = []

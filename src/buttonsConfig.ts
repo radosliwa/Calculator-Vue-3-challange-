@@ -17,9 +17,9 @@ export const config: IButton[] = [
         name: 'number'
     },
     {
-        value: 'delete',
+        value: 'del',
         type: 'function',
-        name: 'delete'
+        name: 'del'
     },
     {
         value: 4,

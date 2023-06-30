@@ -5,30 +5,39 @@
             :key="index"
             :class="[
                 `button ${el.name} button--${currentLayout}`,
-                `flex cursor-pointer justify-center px-6 py-4 text-[32px] font-extrabold
+                `inline-flex h-[80px] cursor-pointer items-center justify-center rounded-md px-6 text-[32px] font-bold leading-[80px]
                  ${setButtonClasses(el)}`
             ]"
             @click="clickHandler(el)"
         >
-            {{ el.value }}
+            {{ el.type === 'function' ? el.value.toString().toUpperCase() : el.value }}
         </button>
     </div>
 </template>
 
 <script setup lang="ts">
 import { ref } from 'vue'
-import { useLayout } from '@/composables/store'
-import { IButton, TValue, TButtonValue } from '@/types'
-import { config } from '../buttonsConfig'
+import { IButton, TButtonValue } from '@/types'
 
-const emit = defineEmits(['key-selected'])
-const { currentLayout } = useLayout()
+interface Props {
+    config: Array<IButton>
+    currentLayout: `layout${number}`
+}
+
+interface Emits {
+    (e: 'key-selected', payload: IButton): void
+}
+
+defineProps<Props>()
+
+const emit = defineEmits<Emits>()
+
 const currentValue = ref<TButtonValue | ''>('')
 
 const setButtonClasses = ({ value, name }: IButton) => {
     const state = ` ${currentValue.value === value ? 'active' : ''}`
     switch (name) {
-        case 'delete':
+        case 'del':
             return 'bg-[var(--keyDelBcg)] text-[var(--keyDelColor)]' + state
         case 'reset':
             return 'bg-[var(--keyResetBcg)] text-[var(--keyResetColor)]' + state

@@ -8,12 +8,12 @@ enum InputTypes {
 
 enum Functions {
     RESET = 'reset',
-    DELETE = 'delete'
+    DELETE = 'del'
 }
 
 type TValue = number | keyof typeof InputTypes
 
-type TOperator = '+' | '-' | '*' | '/' | '=' | 'reset' | 'delete'
+type TOperator = '+' | '-' | '*' | '/' | '=' | 'reset' | 'del'
 
 type TButtonValue = TOperator | number | '.' | '0.'
 interface IButton {
@@ -22,6 +22,6 @@ interface IButton {
     name: string
 }
 
-const isOperator = (value: TButtonValue): value is TOperator => ['+', '-', '*', '/', '=', 'reset', 'delete'].includes(value as TOperator)
+const isOperator = (value: TButtonValue): value is TOperator => ['+', '-', '*', '/', '=', 'reset', 'del'].includes(value as TOperator)
 
 export { TValue, IButton, InputTypes, TButtonValue, isOperator, Functions }
