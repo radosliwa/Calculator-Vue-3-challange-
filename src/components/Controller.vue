@@ -5,7 +5,11 @@
             :key="index"
             :class="[
                 `button ${el.name} button--${currentLayout}`,
-                `inline-flex h-[80px] cursor-pointer items-center justify-center rounded-md px-6 text-[32px] font-bold leading-[80px]
+                // eslint-disable-next-line max-len
+                `inline-flex h-[80px] cursor-pointer items-center justify-center rounded-md px-6 
+                text-[32px] font-bold leading-[80px] 
+                transition-all duration-200
+                ease-out [&:nth-child(17)]:col-span-2 [&:nth-child(18)]:col-span-2
                  ${setButtonClasses(el)}`
             ]"
             @click="clickHandler(el)"
@@ -32,7 +36,7 @@ defineProps<Props>()
 
 const emit = defineEmits<Emits>()
 
-const currentValue = ref<TButtonValue | ''>('')
+const currentValue = ref<string | number>('')
 
 const setButtonClasses = ({ value, name }: IButton) => {
     const state = ` ${currentValue.value === value ? 'active' : ''}`
@@ -48,13 +52,13 @@ const setButtonClasses = ({ value, name }: IButton) => {
     }
 }
 
-const clickHandler = ({ value, name, type }: IButton) => {
-    currentValue.value = value
-    if (name === 'reset') {
+const clickHandler = (el: IButton) => {
+    currentValue.value = el.value
+    if (el.name === 'reset') {
         setTimeout(() => {
             currentValue.value = ''
         }, 300)
     }
-    emit('key-selected', { value, name, type })
+    emit('key-selected', el)
 }
 </script>

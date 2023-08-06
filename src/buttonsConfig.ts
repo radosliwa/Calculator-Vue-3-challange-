@@ -1,94 +1,94 @@
-import { IButton } from './types'
+import { InputTypes, Functions, IButton, OperatorNames } from './types'
 
 export const config: IButton[] = [
     {
         value: 7,
-        type: 'number',
+        type: InputTypes.NUMBER,
         name: 'number'
     },
     {
         value: 8,
-        type: 'number',
-        name: 'number'
+        type: InputTypes.NUMBER,
+        name: InputTypes.NUMBER
     },
     {
         value: 9,
-        type: 'number',
-        name: 'number'
+        type: InputTypes.NUMBER,
+        name: InputTypes.NUMBER
     },
     {
         value: 'del',
-        type: 'function',
-        name: 'del'
+        type: InputTypes.FUNCTION,
+        name: Functions.DELETE
     },
     {
         value: 4,
-        type: 'number',
-        name: 'number'
+        type: InputTypes.NUMBER,
+        name: InputTypes.NUMBER
     },
     {
         value: 5,
-        type: 'number',
-        name: 'number'
+        type: InputTypes.NUMBER,
+        name: InputTypes.NUMBER
     },
     {
         value: 6,
-        type: 'number',
-        name: 'number'
+        type: InputTypes.NUMBER,
+        name: InputTypes.NUMBER
     },
     {
         value: '+',
-        type: 'operator',
-        name: 'plus'
+        type: InputTypes.OPERATOR,
+        name: OperatorNames.PLUS
     },
     {
         value: 1,
-        type: 'number',
+        type: InputTypes.NUMBER,
         name: 'number'
     },
     {
         value: 2,
-        type: 'number',
+        type: InputTypes.NUMBER,
         name: 'number'
     },
     {
         value: 3,
-        type: 'number',
+        type: InputTypes.NUMBER,
         name: 'number'
     },
     {
         value: '-',
-        type: 'operator',
+        type: InputTypes.OPERATOR,
         name: 'minus'
     },
     {
         value: '.',
-        type: 'point',
+        type: InputTypes.POINT,
         name: 'point'
     },
     {
         value: 0,
-        type: 'number',
+        type: InputTypes.NUMBER,
         name: 'number'
     },
     {
         value: '/',
-        type: 'operator',
-        name: 'division'
+        type: InputTypes.OPERATOR,
+        name: OperatorNames.DIVISION
     },
     {
         value: '*',
-        type: 'operator',
-        name: 'times'
+        type: InputTypes.OPERATOR,
+        name: OperatorNames.TIMES
     },
     {
-        value: 'reset',
-        type: 'function',
-        name: 'reset'
+        value: Functions.RESET,
+        type: InputTypes.FUNCTION,
+        name: Functions.RESET
     },
     {
         value: '=',
-        type: 'operator',
-        name: 'equal'
+        type: InputTypes.OPERATOR,
+        name: OperatorNames.EQUAL
     }
 ]

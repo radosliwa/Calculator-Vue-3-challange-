@@ -3,14 +3,11 @@
     "target": "es6",
     "module": "esnext",
     "strict": true,
-    "jsx": "preserve",
     "importHelpers": true,
     "moduleResolution": "node",
-    "allowJs": true,
     "skipLibCheck": true,
     "esModuleInterop": true,
-    "allowSyntheticDefaultImports": true,
-    "sourceMap": true,
+    "strictNullChecks": true,
     "baseUrl": ".",
     "types": [
       "vite/client"],
@@ -23,7 +20,6 @@
       "esnext",
       "dom",
       "dom.iterable",
-      "scripthost"
     ]
   },
   "include": [

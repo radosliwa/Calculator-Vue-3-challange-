@@ -21,7 +21,7 @@ import Layout from '@/layouts/Layout.vue'
 import Controller from '@/components/Controller.vue'
 import Toggle from '@/components/Toggle.vue'
 import Screen from '@/components/Screen.vue'
-import { IButton, TButtonValue, isOperator, Functions, InputTypes } from './types'
+import { IButton, OperatorValues, TButtonValue, isInputNotANumber, Functions, InputTypes } from './types'
 import { config } from '@/buttonsConfig'
 import { useLayout } from '@/composables/store'
 
@@ -36,10 +36,12 @@ const accumulatedValue = ref<number>(0)
 const evaluateExpression = (expression: string): number => Math.round(eval(expression) * 1e10) / 1e10
 
 const selectionHandler = (button: IButton): void => {
+    console.log('button in selection handler', button)
+
     const { value, type, name } = button
     switch (type) {
         case InputTypes.OPERATOR:
-            operatorHandler(value)
+            operatorHandler(value as `${OperatorValues}`)
             break
         case InputTypes.FUNCTION:
             functionHandler(name)
@@ -67,16 +69,16 @@ const functionHandler = (currFunction: string): void => {
 
 const isLastSelectionOperator = computed(() => {
     const lastValue = allValuesArr.value[allValuesArr.value.length - 1]
-    return isOperator(lastValue)
+    return isInputNotANumber(lastValue)
 })
 const isAfterPoint = computed(() => currScreenValue.value.toString().includes('.') && !isLastSelectionOperator.value)
 
 const evaluateAllAndUpdateScreenValue = (valueToShowOnScreen: number | string | null = null): void => {
     accumulatedValue.value = evaluateExpression(allValuesArr.value.join(''))
     const lastOperatorIndex = operator.value ? allValuesArr.value.lastIndexOf(operator.value) : -1
-    const valuesToKeepForScreen = lastOperatorIndex >= 0 ? allValuesArr.value.slice(lastOperatorIndex + 1) : []
 
     /* values to the right of the last selected operator in allValuesArr */
+    const valuesToKeepForScreen = lastOperatorIndex >= 0 ? allValuesArr.value.slice(lastOperatorIndex + 1) : []
     if (valuesToKeepForScreen.length > 0 && operator.value !== '=') {
         currScreenValue.value = evaluateExpression(valuesToKeepForScreen.join(''))
         return
@@ -84,20 +86,21 @@ const evaluateAllAndUpdateScreenValue = (valueToShowOnScreen: number | string | 
     currScreenValue.value = valueToShowOnScreen ?? accumulatedValue.value
 }
 
-const pointHandler = () => {
+const pointHandler = (): void => {
     if (isAfterPoint.value) return
     const shouldCurrScreenValueBeZeroWithPoint = allValuesArr.value.length === 0 || isLastSelectionOperator.value
     allValuesArr.value.push(shouldCurrScreenValueBeZeroWithPoint ? '0.' : '.')
     currScreenValue.value = shouldCurrScreenValueBeZeroWithPoint ? '0.' : currScreenValue.value + '.'
 }
 
-const numberHandler = (value: TButtonValue) => {
+const numberHandler = (value: TButtonValue): void => {
     currScreenValue.value = isAfterPoint.value ? currScreenValue.value.toString() + value : value
     allValuesArr.value.push(value)
     if (operator.value) evaluateAllAndUpdateScreenValue(value)
 }
 
-const operatorHandler = (currOperator: TButtonValue): void => {
+const operatorHandler = (currOperator: `${OperatorValues}`): void => {
+    console.log(`🟢 curr operator`, currOperator)
     const lastValue = allValuesArr.value[allValuesArr.value.length - 1]
     if (currOperator === lastValue) return
     operator.value = currOperator

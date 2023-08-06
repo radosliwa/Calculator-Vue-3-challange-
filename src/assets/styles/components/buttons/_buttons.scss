@@ -1,9 +1,4 @@
 .button {
-    &:nth-child(17),
-    &:last-of-type {
-        grid-column: span 2;
-    }
-    transition: all 0.2s ease-out;
     box-shadow: var(--keyMainBoxShadow);
 
     &:hover:not(.active) {
@@ -12,7 +7,7 @@
     }
     &.active {
         transform: scale(0.95);
-        box-shadow: var(--shadowConfigActive);
+        box-shadow: var(--keyMainBoxShadowActive);
     }
     &.equal {
         box-shadow: var(--keyEqualBoxShadow);

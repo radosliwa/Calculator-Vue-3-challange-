@@ -4,9 +4,9 @@
 
 @layer base {
     :root {
-        --shadowConfig: 0px 3px 0px 0px;
+        --shadowConfig: 1px 3px 0px 0px;
         --shadowConfigHover: 1px 4px 10px 0px;
-        --shadowConfigActive: 0px 0px 0px 0px;
+        --shadowConfigActive:  0px 0px 0px 0px;
 
         --primary: 58, 71, 100;
         --secondary: 24, 32, 52;
@@ -26,6 +26,7 @@
         --keyMainBoxShadow: var(--shadowConfig) var(--keyMainBoxShadowColor);
         --keyMainBoxShadowHover: var(--shadowConfigHover)
             var(--keyMainBoxShadowColor);
+        --keyMainBoxShadowActive: var(--shadowConfigActive) var(--keyMainBoxShadowColor);
 
         /* equal  */
         --keyEqualBoxShadowColor: rgba(var(--positive), 0.4);
