@@ -1,30 +1,30 @@
 interface IVars {
-    [key: string]: string,
+    [key: string]: string
 }
 interface IConfig {
-    [layout: `layout${number}`]: IVars;
+    [layout: `layout${number}`]: IVars
 }
 
 const varsConfig: IConfig = {
     layout1: {
         /* backgrounds */
-        mainBackground: '#3A4764',
-        toggleBackground: '#182034',
-        keypadBackground: '#182034',
-        screenBackground: '#182034',
-        keyMainBcg: '#F0F0F0',
-        keyDelBcg: '#637097',
-        keyEqualBcg: '#d02f2f',
+        // mainBackground: '#3A4764',
+        // toggleBackground: '#182034',
+        // keypadBackground: '#182034',
+        // screenBackground: '#182034',
+        // keyMainBcg: '#F0F0F0',
+        // keyDelBcg: '#637097',
+        // keyEqualBcg: '#d02f2f',
         /* shadows */
-        keyEqualShadow: '#93261A',
+        // keyEqualShadow: '#93261A',
         /* keys */
-        keyMainCol: '#000',
-        keyDelCol: '#FFF',
-        keyEqualCol: '#FFF',
+        // keyMainCol: '#000',
+        // keyDelCol: '#FFF',
+        // keyEqualCol: '#FFF',
         /* text */
         textScreen: '#FFF',
-        textToggle: '#FFF',
-        toggleDot: '#FFF'
+        textToggle: '#FFF'
+        // toggleDot: '#FFF'
     },
     layout2: {
         /* backgrounds */
@@ -64,6 +64,6 @@ const varsConfig: IConfig = {
         keyEqualCol: '#FFF',
         textToggle: '#FFE53D'
     }
-};
+}
 
-export { IVars, IConfig, varsConfig };
+export { IVars, IConfig, varsConfig }

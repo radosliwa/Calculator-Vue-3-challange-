@@ -94,7 +94,7 @@ const pointHandler = (): void => {
 }
 
 const numberHandler = (value: TButtonValue): void => {
-    currScreenValue.value = isAfterPoint.value ? currScreenValue.value.toString() + value : value
+    currScreenValue.value = currScreenValue.value.toString() + value
     allValuesArr.value.push(value)
     if (operator.value) evaluateAllAndUpdateScreenValue(value)
 }

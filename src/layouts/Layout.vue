@@ -27,8 +27,4 @@ watch(
 .toggle {
     color: v-bind('getCurrentVars.textToggle');
 }
-
-.toggle-dot {
-    background: v-bind('getCurrentVars.keyEqualBcg');
-}
 </style>

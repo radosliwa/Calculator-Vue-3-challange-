@@ -1,7 +1,5 @@
 <template>
-    <div
-        class="toggle-slider relative flex h-[25px] w-[75px] rounded-[20px] bg-[var(--toggleBackground)] p-[4px]"
-    >
+    <div class="toggle-slider relative flex h-[25px] w-[75px] rounded-[20px] bg-[var(--toggleBackground)] p-[4px]">
         <div
             v-for="(theme, index) in [1, 2, 3]"
             :key="theme + index"
@@ -9,34 +7,9 @@
             @click="changeTheme(theme)"
         >
             <span class="theme-number">{{ theme }}</span>
-            <!-- .toggle-dot {
-    visibility: hidden;
-    border-radius: 50%;
-    height: 15px;
-    width: 15px;
-
-    &.active {
-        visibility: visible;
-    }
-
-    &.right {
-        position: absolute;
-        transition: all .3s ease-out;
-    }
-
-    &.left {
-        position: absolute;
-        transition: all .3s ease-out;
-    }
-}
-I need to rewrite this scss into tailwindcss below
--->
             <div
                 class="toggle-dot absolute h-[15px] w-[15px] rounded-[50%] bg-[var(--toggleDotBackground)]"
-                :class="[
-                    theme === activeTheme ? 'active visible' : 'invisible',
-                    dotMovingClass
-                ]"
+                :class="[theme === activeTheme ? 'active visible' : 'invisible', dotMovingClass]"
                 :style="`transform:translateX(${slideAmount});`"
             />
         </div>
@@ -77,14 +50,6 @@ const changeTheme = (theme: number) => {
 }
 
 .toggle-dot {
-    // visibility: hidden;
-    // border-radius: 50%;
-    // height: 15px;
-    // width: 15px;
-
-    &.active {
-    }
-
     &.right {
         transition: all 0.3s ease-out;
     }
