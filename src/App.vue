@@ -31,6 +31,7 @@ const { currentLayout } = useLayout()
 const currScreenValue = ref<string | number>(0)
 const operator = ref<null | TButtonValue>()
 const allValuesArr = ref<Array<TButtonValue>>([])
+const getLastValue = () => allValuesArr.value[allValuesArr.value.length - 1]
 const accumulatedValue = ref<number>(0)
 
 const evaluateExpression = (expression: string): number => Math.round(eval(expression) * 1e10) / 1e10
@@ -67,10 +68,8 @@ const functionHandler = (currFunction: string): void => {
     }
 }
 
-const isLastSelectionOperator = computed(() => {
-    const lastValue = allValuesArr.value[allValuesArr.value.length - 1]
-    return isInputNotANumber(lastValue)
-})
+const isLastSelectionOperator = computed(() => isInputNotANumber(getLastValue()))
+
 const isAfterPoint = computed(() => currScreenValue.value.toString().includes('.') && !isLastSelectionOperator.value)
 
 const evaluateAllAndUpdateScreenValue = (valueToShowOnScreen: number | string | null = null): void => {
@@ -94,6 +93,8 @@ const pointHandler = (): void => {
 }
 
 const numberHandler = (value: TButtonValue): void => {
+    console.log(`🟢 number handler `, value)
+    if (!isAfterPoint.value && currScreenValue.value.toString().startsWith('0')) currScreenValue.value = ''
     currScreenValue.value = currScreenValue.value.toString() + value
     allValuesArr.value.push(value)
     if (operator.value) evaluateAllAndUpdateScreenValue(value)
@@ -101,8 +102,7 @@ const numberHandler = (value: TButtonValue): void => {
 
 const operatorHandler = (currOperator: `${OperatorValues}`): void => {
     console.log(`🟢 curr operator`, currOperator)
-    const lastValue = allValuesArr.value[allValuesArr.value.length - 1]
-    if (currOperator === lastValue) return
+    if (currOperator === getLastValue()) return
     operator.value = currOperator
 
     if (currOperator === '=') {
