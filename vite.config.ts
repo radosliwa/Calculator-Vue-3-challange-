@@ -1,18 +1,14 @@
-/* eslint-disable quotes */
-// vite.config.ts
-import { defineConfig } from 'vite';
-import vue from '@vitejs/plugin-vue';
-import path from 'path';
+/// <reference types="vitest" />
 
+import { defineConfig } from 'vite'
+import { fileURLToPath, URL } from 'url'
+import vue from '@vitejs/plugin-vue'
 export default defineConfig({
     plugins: [vue()],
     resolve: {
         alias: {
-            '@': path.resolve(__dirname, '/src'),
-        },
-    },
-    define: {
-        'process.env': {},
+            '@': new URL('./src/', import.meta.url).pathname
+        }
     },
     server: {
         port: 3000
@@ -24,4 +20,4 @@ export default defineConfig({
             }
         }
     }
-});
+})

@@ -4,7 +4,7 @@
             v-for="(el, index) in config"
             :key="index"
             :class="[
-                `button ${el.name} button--${currentLayout}`,
+                `button button-${el.name} button-${el.value} button--${currentLayout}`,
                 // eslint-disable-next-line max-len
                 `inline-flex h-[80px] cursor-pointer items-center justify-center rounded-md px-6 
                 text-[32px] font-bold leading-[80px] 

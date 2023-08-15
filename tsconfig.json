@@ -1,35 +1,20 @@
 {
-  "compilerOptions": {
-    "target": "es6",
-    "module": "esnext",
-    "strict": true,
-    "importHelpers": true,
-    "moduleResolution": "node",
-    "skipLibCheck": true,
-    "esModuleInterop": true,
-    "strictNullChecks": true,
-    "baseUrl": ".",
-    "types": [
-      "vite/client"],
-    "paths": {
-      "@/*": [
-        "src/*"
-      ]
+    "compilerOptions": {
+        "target": "ESNext",
+        "module": "esnext",
+        "strict": true,
+        "importHelpers": true,
+        "moduleResolution": "node",
+        "skipLibCheck": true,
+        "esModuleInterop": true,
+        "strictNullChecks": true,
+        "baseUrl": ".",
+        "types": ["vite/client", "node", "vitest"],
+        "paths": {
+            "@/*": ["src/*"]
+        },
+        "lib": ["esnext", "dom", "dom.iterable"]
     },
-    "lib": [
-      "esnext",
-      "dom",
-      "dom.iterable",
-    ]
-  },
-  "include": [
-    "src/**/*.ts",
-    "src/**/*.tsx",
-    "src/**/*.vue",
-    "tests/**/*.ts",
-    "tests/**/*.tsx", "shims-vue.d.ts"],
-  "exclude": [
-    "node_modules",
-    "__tests__",
-  ]
+    "include": ["src/**/*.ts", "src/**/*.tsx", "src/**/*.vue", "tests/**/*.ts", "tests/**/*.tsx", "shims-vue.d.ts"],
+    "exclude": ["node_modules", "src/__tests__"]
 }
