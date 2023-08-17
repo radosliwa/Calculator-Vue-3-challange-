@@ -1,7 +1,7 @@
 import { mount } from '@vue/test-utils'
 import { describe, it, expect, beforeEach } from 'vitest'
-import App from '../App.vue'
-import Screen from '../components/Screen.vue'
+import App from '../src/App.vue'
+import Screen from '../src/components/Screen.vue'
 
 describe('App.vue', () => {
     const wrapper = mount(App)
@@ -50,7 +50,7 @@ describe('App.vue', () => {
         await wrapper.find(`.button-plus`).trigger('click')
         await wrapper.find(`.button-${randomNumber}`).trigger('click')
         await wrapper.find(`.button-equal`).trigger('click')
-        expect(wrapper.findComponent(Screen).text()).toEqual(String(randomNumber + randomNumber))
+        expect(wrapper.findComponent(Screen).text()).toEqual(String(Number(randomNumber) + Number(randomNumber)))
         await wrapper.find('.button-reset').trigger('click')
         // addition with point
         await wrapper.find(`.button-7`).trigger('click')
@@ -63,6 +63,6 @@ describe('App.vue', () => {
         await wrapper.find(`.button-equal`).trigger('click')
         const sum = Math.round(eval(String(7.6 + 8.2)) * 1e10) / 1e10
         const screen = String(wrapper.findComponent(Screen).text())
-        expect(screen).toEqual(sum)
+        expect(screen).toEqual(String(sum))
     })
 })
